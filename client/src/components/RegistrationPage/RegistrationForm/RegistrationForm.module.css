@@ -1,0 +1,93 @@
+.registrationFormWrap {
+    width: 400px;
+}
+
+
+.usernameWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.birthWrap {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.birthWrap > label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #90949C;
+    padding: 10px 0;
+}
+
+.birth {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    position: relative;
+}
+
+.birthFieldsWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.genderWrap {
+    width: 100%;
+    text-align: left;
+
+}
+
+.genderWrap > label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #90949C;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.gender {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    position: relative;
+}
+
+.genderText {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #90949C;
+}
+
+.genderFieldsWrap {
+    display: flex;
+}
+
+.submitWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.submitBtn {
+    padding: 8px 14px;
+    background-color: #4A76A8;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    letter-spacing: 1px;
+    border-radius: 6px;
+}
+
+.submitBtn.hover {
+    cursor: pointer;
+    background-color: #335E8F;
+}

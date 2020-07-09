@@ -1,0 +1,106 @@
+.errorWrap {
+    display: flex;
+    padding: 0 2px;
+}
+
+.errorBtn {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    filter: brightness(1);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+
+.errorBtn.small {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.errorBtn.medium {
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    font-size: 16px;
+}
+
+.errorBtn.big {
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    font-size: 19px;
+}
+
+.errorBtn.hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+
+.errorBody {
+    position: absolute;
+    background: red;
+    color: white;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+
+.errorBody > span {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+
+.errorBody.bottom {
+    left: 0;
+    top: 45px;
+}
+
+.errorBody.bottom > span {
+    top: -5px;
+    left: 12px;
+}
+
+.errorBody.top {
+    left: 205px;
+    bottom: 60px;
+}
+
+.errorBody.top > span {
+    bottom: -5px;
+    left: 12px;
+}
+
+
+.errorBody.left {
+    right: 420px;
+    top: -3px;
+    white-space: nowrap;
+}
+
+.errorBody.left > span {
+    top: 16px;
+    right: -5px;
+}
+
+
+.errorBody.right {
+    left: 420px;
+    top: -3px;
+    white-space: nowrap;
+}
+
+.errorBody.right > span {
+    top: 16px;
+    left: -5px;
+}

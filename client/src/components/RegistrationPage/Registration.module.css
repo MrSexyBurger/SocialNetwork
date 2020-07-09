@@ -1,0 +1,44 @@
+.regPageWrap {
+    width: 100%;
+    padding: 50px 20px;
+}
+
+.regPage {
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.regPageL > img {
+    margin-top: 20px;
+}
+
+.regPageText {
+    width: 470px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    color: #0e385f;
+    line-height: 29px;
+}
+
+
+.regFormTitle {
+    text-align: left;
+    color: #333;
+    padding-bottom: 20px;
+}
+
+.regFormTitle > h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.regFormTitle > h2 {
+    margin-top: 8px;
+    font-size: 19px;
+    color: #1d2129;
+    font-weight: normal;
+}

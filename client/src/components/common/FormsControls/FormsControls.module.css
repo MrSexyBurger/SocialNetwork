@@ -1,0 +1,115 @@
+.loginWrap {
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    margin-right: 20px;
+    position: relative;
+    background-color: white;
+}
+
+.loginWrap > input {
+    width: 155px;
+    padding: 2px;
+}
+
+loginWrap.error {
+    border: 2px solid red;
+}
+
+.loginWrap.error > input {
+    width: 136px;
+}
+
+
+
+.shortRegWrap {
+    width: 195px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px 8px 10px;
+    border-radius: 4px;
+    border: 2px solid #D2DDF0;
+    background-color: white;
+}
+
+.shortRegWrap > input {
+    width: 100%;
+    font-size: 18px;
+}
+
+.shortRegWrap.error {
+    border: 2px solid red;
+}
+
+.shortRegWrap.error > input {
+    width: 145px;
+}
+
+
+
+
+.longRegWrap {
+    margin-top: 10px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px 8px 10px;
+    border-radius: 4px;
+    border: 2px solid #D2DDF0;
+    background-color: white;
+    position: relative;
+}
+
+.longRegWrap > input {
+    width: 100%;
+    font-size: 18px;
+}
+
+.longRegWrap.error {
+    border: 2px solid red;
+}
+
+.longRegWrap.error > input {
+    width: 345px;
+}
+
+
+.selectWrap {
+    border: 2px solid #D2DDF0;
+}
+
+.selectWrap:not(:first-child) {
+    margin-left: 2px;
+}
+
+.selectWrap.error {
+    border: 2px solid red;
+}
+
+.selectWrap > select {
+    font-size: 14px;
+    padding: 4px;
+    border: none;
+    outline: none;
+}
+
+
+
+.genderInputWrap {
+    padding: 6px;
+    display: block;
+    border: 2px solid transparent;
+    border-radius: 4px;
+}
+
+.genderInputWrap.error {
+    border: 2px solid red;
+}
+
+.genderInputWrap:not(:first-child) {
+    margin-left: 4px;
+}

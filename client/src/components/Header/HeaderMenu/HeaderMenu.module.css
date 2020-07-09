@@ -1,0 +1,85 @@
+.avatar {
+    height: 28px;
+    width: 28px;
+    border-radius: 14px;
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4); /* Параметры тени */
+    padding: 4px 0;
+    z-index: 1;
+}
+
+.menuEditNav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 4px 15px;
+}
+
+.menuEditNavInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Roboto';
+    font-weight: 400;
+    margin-left: 15px;
+}
+
+.menuEditNavLogin {
+    color: #2A5885;
+    font-size: 13px;
+}
+
+.menuEditNavText {
+    color: gray;
+    font-size: 12px;
+}
+
+
+
+.menuNav, .logout {
+    width: 100%;
+    color: #2A5885;
+    font-size: 13px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 7px 15px;
+    background: none;
+}
+
+.menuNavWrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menuLine {
+    width: calc(100% - 30px);
+    height: 1px;
+    background-color: #4A76A8;
+    margin: 4px 0;
+    opacity: 0.25;
+}
+
+.hover {
+    background: #E8EEF5;
+    cursor: pointer;
+}
+

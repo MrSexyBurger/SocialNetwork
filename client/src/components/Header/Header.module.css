@@ -1,0 +1,88 @@
+.header {
+    width: 100%;
+    height: 40px;
+    background-color: #4A76A8;
+    padding: 0 20px;
+}
+
+.header__wrap {
+    width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo__img {
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+.logo__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.logo__text {
+    font-size: 14px;
+    color: white;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.userBtn {
+    background: none;
+    outline: none;
+    padding: 0 8px;
+    border: none;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userBtnAvatar {
+    height: 28px;
+    width: 28px;
+    border-radius: 14px;
+}
+
+.userBtnName {
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.arrowImg {
+    height: 10px;
+    margin-left: 8px;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+}
+
+
+.hover {
+    background-color: #426996;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #335E8F;
+    cursor: pointer;
+}
+
+.loginNav {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
