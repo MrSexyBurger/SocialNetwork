@@ -1,0 +1,60 @@
+.menu {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #BDC2C7;
+    background: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    background: #E5EBF1;
+    filter: brightness(0.9);
+    padding: 0 10px;
+    border-bottom: 1px solid #BDC2C7;
+}
+
+.header > span {
+    font-size: 14px;
+    color: #55677D;
+}
+
+.dots {
+    width: 20px;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #55677D;
+    border-radius: 2px;
+}
+
+.nav {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    color: #55677D;
+    padding: 5px 0 5px 10px;
+}
+
+.navWrap {
+    padding: 5px 0;
+}
+
+.line {
+    width: calc(100% - 20px);
+    height: 1px;
+    background: #BDC2C7;
+    margin: 5px auto;
+}
+
+.hover {
+    background: #E5EBF1;
+}

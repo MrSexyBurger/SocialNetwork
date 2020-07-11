@@ -1,0 +1,32 @@
+.Nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+}
+
+.NavLinkItm {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #3873AF;
+    font-size: 13px;
+    width: 160px;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.NavLinkItm > img {
+    height: 17px;
+    width: 17px;
+    margin-right: 10px;
+}
+
+.NavLinkItm.active {
+    background-color: rgba(153,177,198, 0.2);
+}
+
+.NavLinkItm.hover {
+    background-color: rgba(153,177,198, 0.1);
+}

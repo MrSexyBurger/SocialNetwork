@@ -1,0 +1,15 @@
+.AppContentWrap {
+    padding: 20px;
+}
+
+.AppContent {
+    margin: auto;
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PageContent {
+    width: 100%;
+}

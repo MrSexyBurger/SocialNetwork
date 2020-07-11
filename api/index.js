@@ -52,10 +52,12 @@ app.all('*', function(req, res,next) {
 const authRouter = require('./routes/authRouter');
 const usersRouter = require('./routes/usersRouter')
 const followRouter = require('./routes/followRouter');
+const profileRouter = require('./routes/profileRouter');
 
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/follow', followRouter);
+app.use('/profile', profileRouter);
 
 
 mongoose.connect('mongodb://localhost:27017/social_db', {useNewUrlParser: true, useUnifiedTopology: true}, err => {

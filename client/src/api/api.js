@@ -19,3 +19,9 @@ export const authAPI = {
         return instance.put('auth/registration', {username, email, password, gender, birth});
     }
 }
+
+export const profileApi = {
+    profile(userId){
+        return instance.get(`profile/${userId}`)
+    }
+}

@@ -1,0 +1,13 @@
+.pageWrap{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px ;
+}
+
+.pageL {
+    width: 250px;
+}
+
+.pageR {
+    width: calc(70% - 20px);
+}

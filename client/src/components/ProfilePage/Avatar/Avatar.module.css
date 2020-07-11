@@ -1,0 +1,62 @@
+.avatarWrap {
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+}
+
+.avatarImg {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.actionsWrap {
+    margin-top: 10px;
+    position: relative;
+    height: 30px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.editBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #55677D;
+    background: #E5EBF1;
+    height: 100%;
+    width: calc(100% - 50px);
+    border-radius: 4px;
+}
+
+.menuBtn {
+    width: 40px;
+    height: 100%;
+    border: none;
+    background: #E5EBF1;
+    border-radius: 4px;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #55677D;
+    border-radius: 2px;
+}

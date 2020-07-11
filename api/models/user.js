@@ -19,7 +19,13 @@ const userScheme = new Schema({
     },
     email: String,
     password: String,
-    follow: [{ id: String }]
+    follow: [{ id: String }],
+    posts: [
+        {
+            message: String,
+            img: String,
+            audio: String
+    }]
 })
 
 module.exports = mongoose.model('User', userScheme);
