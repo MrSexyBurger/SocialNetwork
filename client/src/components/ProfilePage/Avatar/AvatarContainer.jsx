@@ -8,6 +8,7 @@ class AvatarContainer extends React.Component {
             editHover: false,
             menuHover: false,
             messageHover: false,
+            giftHover: false,
             menuIsOpened: false
         }
     }
@@ -16,6 +17,7 @@ class AvatarContainer extends React.Component {
         this.setState({
             editHover: false,
             menuHover: false,
+            giftHover: false,
             messageHover: false
         })
 
@@ -23,8 +25,10 @@ class AvatarContainer extends React.Component {
             this.setState({editHover: true});
         } else if (target == 'menu') {
             this.setState({menuHover: true});
-        } else if (target == 'messageHover') {
+        } else if (target == 'message') {
             this.setState({messageHover: true});
+        } else if (target == 'gift') {
+            this.setState({giftHover: true});
         }
     }
 
@@ -37,6 +41,7 @@ class AvatarContainer extends React.Component {
     render() {
         return (
             <Avatar state={this.state}
+                    guest={this.props.guest}
                     avatar={this.props.avatar}
                     toggleHover={this.toggleHover}
                     toggleMenu={this.toggleMenu}

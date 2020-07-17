@@ -1,0 +1,21 @@
+.statusWrap {
+    width: 100%;
+    position: relative;
+}
+
+.status {
+    width: 100%;
+    padding-left: 5px;
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
+    text-align: left;
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.hover {
+    background-color: rgba(153,177,198, 0.2);
+    cursor: pointer;
+}

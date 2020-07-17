@@ -113,3 +113,23 @@ loginWrap.error {
 .genderInputWrap:not(:first-child) {
     margin-left: 4px;
 }
+
+
+.statusInputWrap {
+    width: 100%;
+}
+
+.statusInputWrap > input {
+    width: 100%;
+    padding: 2px 0px 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #D2DDF0;
+    background-color: white;
+}
+
+.statusInputWrap > span {
+    color: red;
+    font-size: 14px;
+    display: block;
+    margin-top: 4px;
+}

@@ -67,11 +67,6 @@ export const birthSelect = ({input, meta, yearValue, monthValue, ...props}) => {
 }
 
 
-
-
-
-
-
 export const genderInput = ({input, meta, ...props}) => {
     const hasError = meta.touched && meta.error;
 
@@ -80,5 +75,16 @@ export const genderInput = ({input, meta, ...props}) => {
             <input {...input} {...props} />
             {input.value == 'male' ? ' Мужской' : ' Женский' }
         </label>
+    )
+}
+
+export const statusInput = ({input, meta, ...props}) => {
+    const hasError = meta.touched && meta.error;
+
+    return (
+        <div className={css.statusInputWrap}>
+            <input {...input} {...props} />
+            {hasError && <span>{meta.error}</span>}
+        </div>
     )
 }

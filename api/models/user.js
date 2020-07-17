@@ -12,7 +12,7 @@ const userScheme = new Schema({
     },
     gender: String,
     birth: String,
-    status: {type: String, default: ''},
+    status: {type: String, default: 'тестовый комментарий!'},
     avatar: {
         small: {type: String, default: avatarSmall},
         big: {type: String, default: avatarBig}

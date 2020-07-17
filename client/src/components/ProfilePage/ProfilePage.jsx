@@ -1,23 +1,18 @@
 import React from "react";
 import css from "./ProfilePage.module.css";
 import AvatarContainer from "./Avatar/AvatarContainer";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const ProfilePage = (props) => {
 
-    if (!props.profile) {
-        console.log('загрузка')
-    } else {
-        console.log('загрузка завершена')
-    }
-
     return (
         <div className={css.pageWrap}>
             <div className={css.pageL}>
-                <AvatarContainer avatar={props.profile ? props.profile.avatar.big : ' '}/>
+                <AvatarContainer guest={props.guest} avatar={props.profile ? props.profile.avatar.big : ' '}/>
             </div>
             <div className={css.pageR}>
-
+                <ProfileInfo guest={props.guest} profile={props.profile} status={props.status}/>
             </div>
         </div>
     )

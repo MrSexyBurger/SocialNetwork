@@ -1,10 +1,10 @@
 .AppContentWrap {
-    padding: 20px;
+    padding: 15px 20px;
 }
 
 .AppContent {
     margin: auto;
-    width: 1140px;
+    width: 1000px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;

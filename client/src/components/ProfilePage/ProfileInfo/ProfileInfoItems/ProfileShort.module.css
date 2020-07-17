@@ -1,0 +1,25 @@
+.shortInfo {
+    margin-top: 10px;
+}
+
+.shortInfoItm {
+    margin-top: 5px;
+    padding: 0 5px;
+    display: flex;
+}
+
+.label {
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
+    width: 30%;
+}
+
+.labeled {
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+    color: #3873AF;
+    width: 60%;
+}
