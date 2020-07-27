@@ -133,3 +133,19 @@ loginWrap.error {
     display: block;
     margin-top: 4px;
 }
+
+.postInputWrap {
+    width: 100%;
+    padding: 2px 0px 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #D2DDF0;
+    background-color: white;
+}
+
+.postInputWrap.error {
+    border: 1px solid red;
+}
+
+.postInputWrap > input {
+    width: 100%;
+}

@@ -48,30 +48,7 @@
     color: #3873AF;
 }
 
-.summary {
-    border-top: 1px solid #D2DDEA;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.summaryItm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-}
-
-.summaryNumber {
-    color: #2A5885;
-    font-size: 19px;
-    line-height: 21px;
-    padding-bottom: 3px;
-}
-
-.summaryLabel {
-    font-size: 13px;
-    line-height: 20px;
-    color: gray;
+.hover {
+    background-color: rgba(153,177,198, 0.2);
+    cursor: pointer;
 }

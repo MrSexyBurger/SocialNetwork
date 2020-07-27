@@ -1,8 +1,9 @@
 import React from "react";
 import css from "./ProfileInfo.module.css";
-import ProfileInfoItems from "./ProfileInfoItems/ProfileShort";
-import Status from "./Status/Status";
+import ProfileShort from "./ProfileInfoItems/ProfileShort";
 import StatusContainer from "./Status/StatusContainer";
+import ProfileFull from "./ProfileInfoItems/ProfileFull";
+import SummaryContainer from "./Summary/SummaryContainer";
 
 const ProfileInfo = (props) => {
 
@@ -17,34 +18,18 @@ const ProfileInfo = (props) => {
                     <div className={css.online}>online</div>
                 </div>
                 <StatusContainer status={status ? status : ''} />
-
             </div>
             <div className={css.infoWrap}>
-                <ProfileInfoItems profile={profile} />
-                <button className={css.showMoreBtn}>Показать подробную информацию</button>
+                <ProfileShort profile={profile} />
+                <button className={css.showMoreBtn + ' ' + ( props.state.isHover ? css.hover : '')}
+                        onMouseEnter={props.toggleHover}
+                        onMouseLeave={props.toggleHover}
+                        onClick={props.toggleMenu}
+                >{props.state.isOpened ? 'Скрыть' : 'Показать'} подробную информацию</button>
+                {props.state.isOpened ? <ProfileFull profile={profile}/> : null}
             </div>
-            <div className={css.summary}>
-                <div className={css.summaryItm}>
-                    <div className={css.summaryNumber}>1714</div>
-                    <div className={css.summaryLabel}>друга</div>
-                </div>
-                <div className={css.summaryItm}>
-                    <div className={css.summaryNumber}>666</div>
-                    <div className={css.summaryLabel}>подписчиков</div>
-                </div>
-                <div className={css.summaryItm}>
-                    <div className={css.summaryNumber}>312</div>
-                    <div className={css.summaryLabel}>фотографий</div>
-                </div>
-                <div className={css.summaryItm}>
-                    <div className={css.summaryNumber}>100</div>
-                    <div className={css.summaryLabel}>видеозаписей</div>
-                </div>
-                <div className={css.summaryItm}>
-                    <div className={css.summaryNumber}>37</div>
-                    <div className={css.summaryLabel}>подарков</div>
-                </div>
-            </div>
+
+            <SummaryContainer />
         </div>
     )
 }

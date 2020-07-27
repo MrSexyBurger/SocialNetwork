@@ -1,7 +1,7 @@
 import React from "react";
 import Status from "./Status";
 import {connect} from "react-redux";
-import {getStatus} from "../../../../redux/profile_reducer";
+import {getStatus, toggleStatusForm} from "../../../../redux/profile_reducer";
 
 class StatusContainer extends React.Component{
     constructor(props) {
@@ -16,18 +16,25 @@ class StatusContainer extends React.Component{
         this.setState({btnHover: !this.state.btnHover} );
     }
 
+    openForm = () => {
+        this.props.toggleStatusForm(true);
+    }
+
     render() {
         return (
-            <Status {...this.props} state={this.state} toggleHover={this.toggleHover} />
+            <Status {...this.props}
+                    state={this.state}
+                    toggleHover={this.toggleHover}
+                    openForm={this.openForm}
+            />
         )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-
+        statusForm: state.profile.statusForm
     }
-
 }
 
-export default connect(mapStateToProps, {getStatus})(StatusContainer);
+export default connect(mapStateToProps, {getStatus, toggleStatusForm})(StatusContainer);

@@ -29,5 +29,17 @@ export const profileApi = {
     },
     updateStatus(status){
         return instance.put('profile/status', {status});
+    },
+    getPosts(userId){
+        return instance.get(`profile/posts/${userId}`);
+    },
+    postPost(post){
+        return instance.post('profile/posts', {post});
+    },
+    updatePost(post){
+        return instance.put('profile/posts', {post});
+    },
+    deletePost(postId){
+        return instance.delete(`profile/posts/${postId}`);
     }
 }

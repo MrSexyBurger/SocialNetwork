@@ -79,12 +79,19 @@ export const genderInput = ({input, meta, ...props}) => {
 }
 
 export const statusInput = ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error;
-
     return (
         <div className={css.statusInputWrap}>
             <input {...input} {...props} />
-            {hasError && <span>{meta.error}</span>}
+        </div>
+    )
+}
+
+export const postInput = ({input, meta, ...props}) => {
+    const hasError = meta.touched && meta.error;
+
+    return (
+        <div className={css.postInputWrap + ' ' + (hasError ? css.error : '')}>
+            <input {...input} {...props} />
         </div>
     )
 }

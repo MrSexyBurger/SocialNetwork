@@ -9,6 +9,6 @@ exports.users = (req, res) => {
 
 exports.deleteAll = (req, res) => {
     UserModel.deleteMany({}, (err, res) => {
-        console.log('Все пользователи удалены!');
+        console.log('Все пользователи удалены!!');
     })
 }

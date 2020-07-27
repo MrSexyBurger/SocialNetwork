@@ -1,0 +1,49 @@
+.infoShortWrap {
+    margin-top: 10px;
+}
+
+.infoFullWrap {
+    margin: 10px 0;
+}
+
+.infoItm {
+    margin-top: 5px;
+    padding: 0 5px;
+    display: flex;
+}
+
+.label {
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
+    width: 30%;
+}
+
+.labeled {
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+    color: #3873AF;
+    width: 60%;
+}
+
+.ItmLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+.ItmLabel > span {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #D2DDEA;
+    margin-left: 10px;
+}

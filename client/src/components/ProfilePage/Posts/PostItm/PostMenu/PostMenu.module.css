@@ -1,0 +1,71 @@
+.postMenuWrap {
+    position: absolute;
+    right: -4px;
+    top: 58px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    padding: 4px 0;
+    z-index: 1;
+}
+
+.postMenuWrap:after  {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    transform: rotate(45deg);
+    border-top: 2px solid rgba(0,0,0,0.14);
+    border-left: 2px solid rgba(0,0,0,0.14);
+}
+
+.postMenuBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    outline: none;
+    border: none;
+    color: gray;
+}
+
+.arrowImg {
+    opacity: 25%;
+    width: 14px;
+}
+
+.postMenuBtn.hover > .arrowImg {
+    cursor: pointer;
+    opacity: 40%;
+}
+
+.postMenuBtn.active > .arrowImg {
+    cursor: pointer;
+    opacity: 55%;
+}
+
+.postActionBtn {
+    color: #2A5885;
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    padding: 7px 15px;
+    background: none;
+    position: relative;
+    z-index: 1;
+}
+
+.postActionBtn.hover {
+    cursor: pointer;
+    background: #E5EBF1;
+}

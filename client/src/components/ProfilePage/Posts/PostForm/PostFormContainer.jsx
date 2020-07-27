@@ -1,9 +1,9 @@
 import React from "react";
-import ReduxStatusForm from "./StatusForm";
 import {connect} from "react-redux";
-import {updateStatus} from "../../../../../redux/profile_reducer";
+import {postPost} from "../../../../redux/profile_reducer";
+import ReduxPostForm from "./PostForm";
 
-class StatusFormContainer extends React.Component {
+class PostFormContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,12 +17,12 @@ class StatusFormContainer extends React.Component {
     }
 
     onSubmit = (formData) => {
-        this.props.updateStatus(formData.status);
+        this.props.postPost(formData.post);
     }
 
     render() {
         return (
-            <ReduxStatusForm isHover={this.state.isHover}
+            <ReduxPostForm   isHover={this.state.isHover}
                              toggleHover={this.toggleHover}
                              status={this.props.status}
                              onSubmit={this.onSubmit}/>
@@ -30,4 +30,4 @@ class StatusFormContainer extends React.Component {
     }
 }
 
-export default connect(null, {updateStatus})(StatusFormContainer);
+export default connect(null, {postPost})(PostFormContainer);
