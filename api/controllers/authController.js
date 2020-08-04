@@ -99,20 +99,33 @@ exports.registration = function (req, res) {
         username, gender, birth, email, password
     })
 
-    user.save( (err, data) => {
-        if(err) {
+    UserModel.findOne({email: email}, (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.sendStatus(400);
+        }
+
+        if (result) {
             res.send(JSON.stringify({
-                message: 'Не удалось зарегестироваться!',
+                message: 'Этот почтовый адрес уже занят!',
                 resultCode: 1
             }))
+        } else {
+            user.save( (err, result) => {
+                if(err) {
+                    res.send(JSON.stringify({
+                        message: 'Не удалось зарегестироваться!',
+                        resultCode: 1
+                    }))
+                }
+                console.log(result)
+                res.cookie('auth', result._id, { maxAge: 3600000 * 24 });
+                res.send(JSON.stringify({
+                    message: 'Регистрация прошла успешно!',
+                    resultCode: 0
+                }))
+            })
         }
-        console.log(data)
-        res.cookie('auth', data._id, { maxAge: 3600000 * 24 });
-        res.send(JSON.stringify({
-            message: 'Регистрация прошла успешно!',
-            resultCode: 0
-        }))
-
     })
-
 }

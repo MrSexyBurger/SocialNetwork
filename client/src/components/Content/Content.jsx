@@ -1,10 +1,9 @@
 import {Route} from "react-router-dom";
-import ProfilePage from "../ProfilePage/ProfilePage";
-import FeedPage from "../FeedPage/FeedPage";
 import React from "react";
 import css from './Content.module.css';
 import NavbarContainer from "../Navbar/NavbarContainer";
 import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
+import FriendsPageContainer from "../FriendsPage/FriendsPageContainer";
 
 const Content = () => {
     return (
@@ -13,7 +12,7 @@ const Content = () => {
                 <NavbarContainer />
                 <div className={css.PageContent}>
                     <Route path='/profile/:userId?' render={() => <ProfilePageContainer/>}/>
-                    <Route path={'/feed'} render={() => <FeedPage/>}/>
+                    <Route path={'/friends'} render={() => <FriendsPageContainer/>}/>
                 </div>
             </div>
         </div>

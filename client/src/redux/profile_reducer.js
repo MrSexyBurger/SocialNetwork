@@ -19,11 +19,12 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USER_PROFILE:
+        case SET_USER_PROFILE: {
             return {
                 ...state,
                 profile: action.profile
             }
+        }
         case SET_STATUS: {
             return {
                 ...state,
@@ -49,7 +50,6 @@ const profileReducer = (state = initialState, action) => {
             return stateCopy
         }
         case DELETE_POST: {
-            console.log('ok')
             let stateCopy = {...state};
             stateCopy.posts = [...state.posts];
             stateCopy.posts = stateCopy.posts.filter(post => post._id != action.postId);

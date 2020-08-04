@@ -10,7 +10,8 @@ exports.profile = (req, res) => {
             avatar: profile.avatar,
             gender: profile.gender,
             birth: profile.birth,
-            location: profile.location
+            location: profile.location,
+            friends: profile.friends
         }));
     })
 }
@@ -75,7 +76,6 @@ exports.postPost = (req, res) => {
 
 exports.deletePost = (req, res) => {
     const postId = req.params.postId
-    console.log(postId)
     PostModel.deleteOne({_id: postId}, (err, result) => {
         res.send(JSON.stringify({
             message: 'Пост удалён!',

@@ -13,21 +13,21 @@ const MonthOptions = (props) => {
 */
 
     const monthArr = [
-        {eng: 'January',   rus: 'Январь' },
-        {eng: 'February',  rus: 'Февраль' },
-        {eng: 'March',     rus: 'Март' },
-        {eng: 'April',     rus: 'Апрель' },
-        {eng: 'May',       rus: 'Май' },
-        {eng: 'June',      rus: 'Июнь' },
-        {eng: 'July',      rus: 'Июль' },
-        {eng: 'August',    rus: 'Август' },
-        {eng: 'September', rus: 'Сентябрь' },
-        {eng: 'October',   rus: 'Октябрь' },
-        {eng: 'November',  rus: 'Ноябрь' },
-        {eng: 'December',  rus: 'Декабрь' },
-        ]
+        {eng: 'January',   rus: 'Январь',   val:1},
+        {eng: 'February',  rus: 'Февраль',  val:2},
+        {eng: 'March',     rus: 'Март',     val:3},
+        {eng: 'April',     rus: 'Апрель',   val:4},
+        {eng: 'May',       rus: 'Май',      val:5},
+        {eng: 'June',      rus: 'Июнь',     val:6},
+        {eng: 'July',      rus: 'Июль',     val:7},
+        {eng: 'August',    rus: 'Август',   val:8},
+        {eng: 'September', rus: 'Сентябрь', val:9},
+        {eng: 'October',   rus: 'Октябрь',  val:10},
+        {eng: 'November',  rus: 'Ноябрь',   val:11},
+        {eng: 'December',  rus: 'Декабрь',  val:12},
+    ]
 
-    const months = monthArr.map( month => <option value={month.eng}>{month.rus}</option>);
+    const months = monthArr.map( month => <option value={month.val}>{month.rus}</option>);
 
     return months;
 }

@@ -1,27 +1,30 @@
 const UserModel = require('../models/user');
 
 exports.follow = (req, res) => {
-    const id = '12';
-    const userId = '123444';
-    const message = `Пользователь с id {id} успешно добавлен`;
-    const resultCode = 0;
+    let userId = req.body.userId;
+    let authId = req.cookies.auth;
 
-    UserModel.update({_id: userId}, {$push: {follow: {id}}}, (err, users) => {
-        res.send(JSON.stringify({
-            message, resultCode
-        }))
+    UserModel.updateOne({_id: authId}, {$push: {friends: userId}}, (err, users) => {
+        UserModel.updateOne({_id: userId}, {$push: {friends: authId}}, (err, users) => {
+            res.send(JSON.stringify({
+                message: `Пользователь с id ${userId} успешно добавлен!`,
+                resultCode: 0
+            }))
+        })
     })
 }
 
 exports.unfollow = (req, res) => {
-    const id = '12';
-    const userId = '123444';
-    const message = `Пользователь с id {id} успешно добавлен`;
-    const resultCode = 0;
+    let userId = req.params.userId;
+    let authId = req.cookies.auth;
 
-    UserModel.update({_id: userId}, {$pull: {follow: {id: id}}}, (err, users) => {
-        res.send(JSON.stringify({
-            message, resultCode
-        }))
+    UserModel.updateOne({_id: authId}, {$pull: {friends: userId}}, (err, users) => {
+        UserModel.updateOne({_id: userId}, {$pull: {friends: authId}}, (err, users) => {
+            res.send(JSON.stringify({
+                message: `Пользователь с id ${userId} успешно удален!`,
+                resultCode: 0
+            }))
+        })
     })
+
 }

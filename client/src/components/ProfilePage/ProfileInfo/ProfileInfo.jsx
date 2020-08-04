@@ -3,7 +3,7 @@ import css from "./ProfileInfo.module.css";
 import ProfileShort from "./ProfileInfoItems/ProfileShort";
 import StatusContainer from "./Status/StatusContainer";
 import ProfileFull from "./ProfileInfoItems/ProfileFull";
-import SummaryContainer from "./Summary/SummaryContainer";
+import Summary from "./Summary/Summary";
 
 const ProfileInfo = (props) => {
 
@@ -28,8 +28,9 @@ const ProfileInfo = (props) => {
                 >{props.state.isOpened ? 'Скрыть' : 'Показать'} подробную информацию</button>
                 {props.state.isOpened ? <ProfileFull profile={profile}/> : null}
             </div>
-
-            <SummaryContainer />
+            {profile && profile.friends
+                ? <Summary friends={profile.friends} />
+                : null}
         </div>
     )
 }

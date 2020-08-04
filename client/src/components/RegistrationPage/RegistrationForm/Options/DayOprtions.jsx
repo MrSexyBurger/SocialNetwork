@@ -9,22 +9,20 @@ const DayOptions = (props) => {
     let year = props.year;
     let isLeap = new Date(year,2,1,-1).getDate()==29;
 
-
-    if (   month === 'January' || month === 'March'   || month === 'May' || month === 'July'
-        || month === 'August'  || month === 'October' || month === 'December' ) {
+    if ( month == 1 || month == 3   || month == 5 || month == 7
+        || month == 8  || month == 10 || month == 12 ) {
         dayCount = 31;
     }
 
-    if (month === 'April' || month === 'June'|| month === 'September' ||  month === 'November' ) {
+    if (month == 4 || month == 6|| month == 9 ||  month == 11 ) {
         dayCount = 30;
     }
 
-    if (month === 'February' && !isLeap) {
+    if (month == 2 && !isLeap) {
         dayCount = 28;
-    } else if (month === 'February' && isLeap) {
+    } else if (month == 2 && isLeap) {
         dayCount = 29;
     }
-
 
     for (let i = 1; i <= dayCount; i++) {
         dayArr.push(i);

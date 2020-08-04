@@ -63,6 +63,8 @@ export const reg = (username, email, password, gender, birth) => (dispatch) => {
         .then( response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData());
+            } else {
+                console.log(response.data.message);
             }
         } )
 }

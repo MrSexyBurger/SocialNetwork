@@ -1,0 +1,25 @@
+.summaryItm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.summaryItm.hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.summaryNumber {
+    color: #2A5885;
+    font-size: 19px;
+    line-height: 21px;
+    padding-bottom: 3px;
+}
+
+.summaryLabel {
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
+}

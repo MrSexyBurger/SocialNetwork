@@ -1,0 +1,46 @@
+.usersWrap {
+    padding: 0 20px;
+}
+
+.userItm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.userItm:not(:last-child){
+    border-bottom: 1px solid #D2DDEA;
+}
+
+.avatarImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 40px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 15px;
+    flex: 1;
+}
+
+.userName {
+    color: #2A5885;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.age {
+    margin-top: 2px;
+    color: gray;
+    font-size: 15px;
+}
+
+.empty {
+    padding: 20px 0;
+}

@@ -23,7 +23,7 @@ class RegistrationFormContainer extends React.Component {
         const username = `${formData.firstName} ${formData.surname}`;
         const email = formData.email;
         const password = formData.password;
-        const birth = `${formData.day} ${formData.month} ${formData.year}`;
+        const birth = `${formData.day}.${formData.month}.${formData.year}`;
         const gender = formData.gender;
 
         this.props.reg(username, email, password, gender, birth);

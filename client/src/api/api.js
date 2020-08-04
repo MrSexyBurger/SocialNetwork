@@ -43,3 +43,15 @@ export const profileApi = {
         return instance.delete(`profile/posts/${postId}`);
     }
 }
+
+export const usersApi = {
+    getUsers(section){
+        return instance.get(`users?section=${section}`);
+    },
+    follow(userId){
+        return instance.put('follow', {userId})
+    },
+    unfollow(userId){
+        return instance.delete(`follow/${userId}`)
+    }
+}

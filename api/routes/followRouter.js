@@ -2,7 +2,7 @@ const express = require('express');
 const followRouter = express.Router();
 const followController = require('../controllers/followController.js');
 
-followRouter.post('/', followController.follow);
-followRouter.delete('/', followController.unfollow);
+followRouter.put('/', followController.follow);
+followRouter.delete('/:userId', followController.unfollow);
 
 module.exports = followRouter;

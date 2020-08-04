@@ -1,8 +1,8 @@
 import React from "react";
 import css from "./ProfileShortFull.module.css";
+import {calculateAge} from "../../../../common/calculateAge";
 
 const ProfileShort = (props) => {
-
     const profile = props.profile;
 
     return (
@@ -11,7 +11,7 @@ const ProfileShort = (props) => {
 
             <div className={css.infoItm}>
                 <div className={css.label}>День рождения:</div>
-                <div className={css.labeled}>{profile ? `${profile.birth} г.` : ''}</div>
+                <div className={css.labeled}>{profile ? `${profile.birth} г. (${calculateAge(profile.birth)})` : ''}</div>
             </div>
 
             {profile && profile.location.city ?

@@ -22,6 +22,12 @@ class ProfilePageContainer extends React.Component {
         this.props.getPosts(userId);
     }
 
+    componentWillReceiveProps (props) {
+        if (this.state.postId !== props._id) {
+            this.setState({postId: props._id});
+        }
+    }
+
     render() {
 
         if ( this.props.profile

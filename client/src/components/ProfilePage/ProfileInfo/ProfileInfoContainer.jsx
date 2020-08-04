@@ -6,7 +6,7 @@ class ProfileInfoContainer extends React.Component {
         super(props);
         this.state = {
             isHover: false,
-            isOpened: true
+            isOpened: false
         }
     }
 
