@@ -5,16 +5,21 @@ import {reset} from 'redux-form';
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
-const SET_STATUS_FORM = 'SET_STATUS_FORM';
+const SET_STATUS_EDIT = 'SET_STATUS_EDIT';
 const SET_POSTS = 'SET_POSTS';
 const PUSH_NEW_POST = 'PUSH_NEW_POST';
 const DELETE_POST = 'DELETE_POST';
+const SET_GUEST = 'SET_GUEST';
+const SET_INFO = 'SET_INFO';
 
 let initialState = {
-    profile: null,
+    info: null,
     status: null,
-    statusForm: false,
-    posts: null
+    guest: true,
+    statusEdit: false,
+    fullInfo: false,
+    posts: null,
+    friendsShort: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -22,19 +27,23 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE: {
             return {
                 ...state,
-                profile: action.profile
+                info: action.info,
+                status: action.status,
+                posts: action.posts,
+                friendsShort: action.friendsShort
             }
         }
         case SET_STATUS: {
             return {
                 ...state,
-                status: action.status
+                status: action.status,
+                statusEdit: false
             }
         }
-        case SET_STATUS_FORM: {
+        case SET_STATUS_EDIT: {
             return {
                 ...state,
-                statusForm: action.statusForm
+                statusEdit: action.statusEdit
             }
         }
         case SET_POSTS: {
@@ -42,6 +51,17 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: action.posts
             }
+        }
+        case SET_GUEST: {
+            return {
+                ...state,
+                guest: action.guest
+            }
+        }
+        case SET_INFO: {
+            let stateCopy = {...state}
+            stateCopy.fullInfo = !stateCopy.fullInfo;
+            return stateCopy;
         }
         case PUSH_NEW_POST: {
             let stateCopy = {...state};
@@ -52,7 +72,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST: {
             let stateCopy = {...state};
             stateCopy.posts = [...state.posts];
-            stateCopy.posts = stateCopy.posts.filter(post => post._id != action.postId);
+            stateCopy.posts = stateCopy.posts.filter(post => post._id !== action.postId);
             return stateCopy;
         }
         default:
@@ -60,12 +80,21 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const setUserProfile = (profile, guest) => (
+    {
+        type: SET_USER_PROFILE,
+        info: profile.data.info,
+        status: profile.data.status,
+        posts: profile.data.posts,
+        friendsShort: profile.data.friendsShort
+    });
 export const setStatus = (status) => ({type: SET_STATUS, status});
-export const setStatusForm = (statusForm) => ({type: SET_STATUS_FORM, statusForm});
+export const setStatusEdit = (statusEdit) => ({type: SET_STATUS_EDIT, statusEdit});
 export const setPosts = (posts) => ({type: SET_POSTS, posts});
-export const addNewPost = (post) => ({type: PUSH_NEW_POST, post} )
-export const delPost = (postId) => ({type: DELETE_POST, postId})
+export const setGuest = (guest) => ({type: SET_GUEST, guest});
+export const setFullInfo = () => ({type: SET_INFO});
+export const addNewPost = (post) => ({type: PUSH_NEW_POST, post});
+export const delPost = (postId) => ({type: DELETE_POST, postId});
 
 export const getUserProfile = (userId) => (dispatch) => {
     profileApi.profile(userId)
@@ -74,36 +103,38 @@ export const getUserProfile = (userId) => (dispatch) => {
         })
 }
 
-export const getStatus = (userId) => (dispatch) => {
-    profileApi.getStatus(userId)
-        .then(response => {
-            dispatch(setStatus(response.data));
-        })
-}
-
 export const updateStatus = (status) => (dispatch) => {
     profileApi.updateStatus(status)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setStatus(status));
-                dispatch(setStatusForm(false))
             }
         })
 }
 
-export const toggleStatusForm = (open) => (dispatch) => {
-    dispatch(setStatusForm(open));
+export const updateStatusEdit = (edit) => (dispatch) => () => {
+    dispatch(setStatusEdit(edit));
 }
 
+export const updateGuest = (guest) => (dispatch) => {
+    dispatch(setGuest(guest));
+}
+
+export const toggleFullInfo = () => (dispatch) => {
+    dispatch(setFullInfo());
+}
+
+
 export const getPosts = (userId) => (dispatch) => {
+    console.log('getPostWorks')
     profileApi.getPosts(userId)
         .then(response => {
             dispatch(setPosts(response.data.posts));
         })
 }
 
-export const postPost = (post) => (dispatch) => {
-    profileApi.postPost(post)
+export const postPost = (post, reciever) => (dispatch) => {
+    profileApi.postPost(post, reciever)
         .then(response => {
             if(response.data.resultCode === 0){
                 dispatch(addNewPost(response.data.post))

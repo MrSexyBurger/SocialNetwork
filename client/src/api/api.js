@@ -33,8 +33,8 @@ export const profileApi = {
     getPosts(userId){
         return instance.get(`profile/posts/${userId}`);
     },
-    postPost(post){
-        return instance.post('profile/posts', {post});
+    postPost(post, userId){
+        return instance.post('profile/posts', {post, userId});
     },
     updatePost(post){
         return instance.put('profile/posts', {post});

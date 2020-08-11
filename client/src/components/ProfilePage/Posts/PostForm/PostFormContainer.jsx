@@ -5,29 +5,21 @@ import ReduxPostForm from "./PostForm";
 
 class PostFormContainer extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isHover: false
-        }
-    }
-
-    toggleHover = () => {
-        this.setState({isHover: !this.state.isHover})
-    }
-
     onSubmit = (formData) => {
-        this.props.postPost(formData.post);
+        const post = formData.post;
+        const userId = this.props.profile.info.userId;
+        this.props.postPost(post, userId);
     }
 
     render() {
-        return (
-            <ReduxPostForm   isHover={this.state.isHover}
-                             toggleHover={this.toggleHover}
-                             status={this.props.status}
-                             onSubmit={this.onSubmit}/>
-        )
+        return <ReduxPostForm onSubmit={this.onSubmit}/>
     }
 }
 
-export default connect(null, {postPost})(PostFormContainer);
+const mapStateToProps = state => {
+    return {
+        profile: state.profile
+    }
+}
+
+export default connect(mapStateToProps, {postPost})(PostFormContainer);

@@ -9,9 +9,10 @@ const Posts = (props) => {
         posts = posts.map(post => {
             return (
                 <PostItmContainer   _id={post._id}
+                                    sender={post.sender}
                                     text={post.text}
-                                    avatar={props.avatar}
-                                    userName={props.userName}
+                                    avatar={post.avatar}
+                                    userName={post.username}
                                     date={post.date}
                 />
             )
@@ -22,7 +23,6 @@ const Posts = (props) => {
 
     return (
         <div className={css.postsWrap}>
-            <PostFormContainer/>
             {posts}
         </div>
     )

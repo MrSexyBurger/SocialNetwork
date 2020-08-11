@@ -1,53 +1,41 @@
 import React from "react";
 import Avatar from "./Avatar";
+import {connect} from "react-redux";
 
 class AvatarContainer extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            editHover: false,
-            menuHover: false,
-            messageHover: false,
-            giftHover: false,
-            menuIsOpened: false
-        }
-    }
-
-    toggleHover = (target) => () => {
-        this.setState({
-            editHover: false,
-            menuHover: false,
-            giftHover: false,
-            messageHover: false
-        })
-
-        if (target == 'edit'){
-            this.setState({editHover: true});
-        } else if (target == 'menu') {
-            this.setState({menuHover: true});
-        } else if (target == 'message') {
-            this.setState({messageHover: true});
-        } else if (target == 'gift') {
-            this.setState({giftHover: true});
+            menu: false
         }
     }
 
     toggleMenu = () => {
         this.setState({
-            menuIsOpened: !this.state.menuIsOpened
+            menu: !this.state.menu
         })
     }
 
     render() {
+        let profile = this.props.profile;
+        let avatar = profile ? profile.avatar.big : null;
+
         return (
-            <Avatar state={this.state}
-                    guest={this.props.guest}
-                    avatar={this.props.avatar}
-                    toggleHover={this.toggleHover}
+            <Avatar guest={this.props.guest}
+                    avatar={avatar}
+                    menu={this.state.menu}
                     toggleMenu={this.toggleMenu}
             />
         )
     }
 }
 
-export default AvatarContainer;
+const mapStateToProps = state => {
+    return {
+        profile: state.profile.info,
+        guest: state.profile.guest
+    }
+}
+
+export default connect(mapStateToProps, null)(AvatarContainer);

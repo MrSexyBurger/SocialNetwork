@@ -2,7 +2,10 @@ import React from "react";
 import css from "./ProfilePage.module.css";
 import AvatarContainer from "./Avatar/AvatarContainer";
 import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
-import PostsContaner from "./Posts/PostsContaner";
+
+import PostFormContainer from "./Posts/PostForm/PostFormContainer";
+import PostsContainer from "./Posts/PostsContainer";
+import FriendsShortContainer from "./FriendsShort/FriendsShortContainer";
 
 
 const ProfilePage = (props) => {
@@ -12,15 +15,13 @@ const ProfilePage = (props) => {
     return (
         <div className={css.pageWrap}>
             <div className={css.pageL}>
-                <AvatarContainer guest={props.guest} avatar={profile ? profile.avatar.big : ' '}/>
+                <AvatarContainer/>
+                <FriendsShortContainer/>
             </div>
             <div className={css.pageR}>
-                <ProfileInfoContainer guest={props.guest} profile={profile} status={props.status}/>
-                <PostsContaner guest={props.guest}
-                               posts={props.posts}
-                               userName={profile ? profile.username : ''}
-                               avatar={profile ? profile.avatar.small : ''}
-                />
+                <ProfileInfoContainer/>
+                <PostFormContainer/>
+                <PostsContainer/>
             </div>
         </div>
     )

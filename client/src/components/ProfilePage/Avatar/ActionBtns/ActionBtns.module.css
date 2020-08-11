@@ -1,0 +1,78 @@
+.sendMessageBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    background: #4A76A8;
+    height: 100%;
+    width: calc(100% - 41px);
+    border-radius: 4px 0px 0px 4px;
+    outline: none;
+    border: none;
+}
+
+.sendGiftBtn {
+    width: 40px;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: #4A76A8;
+    border-radius: 0 4px 4px 0;
+    background-image: url("../../../../assets/images/gift-icon.png");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.actionsWrap {
+    margin-top: 10px;
+    position: relative;
+    height: 30px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.editBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #55677D;
+    background: #E5EBF1;
+    height: 100%;
+    width: calc(100% - 45px);
+    border-radius: 4px;
+}
+
+.menuBtn {
+    width: 40px;
+    height: 100%;
+    border: none;
+    background: #E5EBF1;
+    border-radius: 4px;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #55677D;
+    border-radius: 2px;
+}

@@ -5,7 +5,7 @@ import SummaryItmContainer from "./SummaryItm/SummaryItmContainer";
 const Summary = (props) => {
     return (
         <div className={css.summary}>
-            <SummaryItmContainer itmName={'friends'} friends={props.friends}/>
+            <SummaryItmContainer itmName={'friends'}/>
         </div>
     )
 }

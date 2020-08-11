@@ -34,11 +34,7 @@ class ToggleFriendBtnContainer extends React.Component{
         this.props.unfollowUser(this.state.userId, this.props.auth);
     }
 
-
-
-
     render() {
-        //console.log(this.props.friends)
         return (
             <ToggleFriendBtn state={this.state}
                              toggleHover={this.toggleHover}

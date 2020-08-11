@@ -44,4 +44,10 @@ class PostItmContainer extends React.Component {
     }
 }
 
-export default connect(null, {deletePost})(PostItmContainer);
+const mapStateToProps = state => {
+    return {
+        auth: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps, {deletePost})(PostItmContainer);

@@ -3,6 +3,7 @@
     overflow: hidden;
     border: 1px solid #BDC2C7;
     background: white;
+    margin-top: 10px;
 }
 
 .header {
@@ -27,6 +28,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    top: -1px;
+    right: -1px;
 }
 
 .dot {
@@ -36,15 +40,7 @@
     border-radius: 2px;
 }
 
-.nav {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    color: #55677D;
-    padding: 5px 0 5px 10px;
-}
-
-.navWrap {
+.actionWrap {
     padding: 5px 0;
 }
 
@@ -53,8 +49,4 @@
     height: 1px;
     background: #BDC2C7;
     margin: 5px auto;
-}
-
-.hover {
-    background: #E5EBF1;
 }

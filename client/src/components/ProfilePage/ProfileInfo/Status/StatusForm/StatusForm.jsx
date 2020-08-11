@@ -30,7 +30,7 @@ class ReduxStatusForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div onMouseLeave={this.props.updateStatusEdit(false)}>
                 <form className={css.statusFormWrap} onSubmit={this.props.handleSubmit} >
                     <Field autoFocus={true}  name={'status'} validate={maxLength60}  component={statusInput} />
                     <button className={css.submitBtn + ' ' + (this.props.isHover ? css.hover : '')}

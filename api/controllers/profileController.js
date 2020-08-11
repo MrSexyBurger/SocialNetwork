@@ -1,25 +1,64 @@
 const UserModel = require('../models/user');
 const PostModel = require('../models/post');
 
+
 exports.profile = (req, res) => {
     UserModel.findOne({_id: req.params.userId}, (err, profile) => {
         if (err) return res.sendStatus(400);
-        res.send(JSON.stringify({
-            userId: profile._id,
-            username: profile.username,
-            avatar: profile.avatar,
-            gender: profile.gender,
-            birth: profile.birth,
-            location: profile.location,
-            friends: profile.friends
-        }));
-    })
-}
+        let profileData = {
+            info: {
+                userId: profile._id,
+                username: profile.username,
+                avatar: profile.avatar,
+                gender: profile.gender,
+                birth: profile.birth,
+                location: profile.location,
+                friendsCount: profile.friends.length
+            },
+            status: profile.status
+        }
 
-exports.getStatus = (req, res) => {
-    UserModel.findOne({_id: req.params.userId}, (err, profile) => {
-        if (err) return res.sendStatus(400);
-        res.send(JSON.stringify(profile.status));
+        let test = profile.friends;
+
+        //test = toString(test).split(',')
+
+        //console.log(test)
+
+
+
+        UserModel.find({ _id: test} )
+            .limit(6)
+            .then(result => {
+            const friendsShort = result.map(friend => {
+                return {
+                    userId: friend._id,
+                    username: friend.username,
+                    avatar: friend.avatar.small
+                }
+            });
+
+            profileData.friendsShort = friendsShort;
+
+            PostModel.find({receiver: req.params.userId})
+                //.skip(2)
+                //.limit(3)
+                .then(posts => {
+                    if (err) return res.sendStatus(400);
+
+                    profileData.posts = posts;
+
+                    res.send(JSON.stringify({
+                        data: profileData,
+                        resultCode: 0
+                    }));
+                })
+
+        })
+
+
+
+
+
     })
 }
 
@@ -32,46 +71,54 @@ exports.editStatus = (req, res) => {
     })
 }
 
-exports.getPosts = (req, res) => {
-
-    PostModel.find({userId: req.params.userId}, (err, posts) => {
-        if (err) return res.sendStatus(400);
-        res.send(JSON.stringify({
-            posts: posts,
-            resultCode: 0
-        }));
-    })
-}
-
 exports.postPost = (req, res) => {
-
-    const userId = req.cookies.auth;
+    const userId = req.body.userId;
+    const authId = req.cookies.auth;
     const text = req.body.post;
+    const avatar = req.body.avatar;
+    const username = req.body.username;
 
     let date = new Date();
-    date = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+
+    let day = date.getDate();
+    let month =  date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let min = date.getMinutes() > 10 ? date.getMinutes() : '0' + date.getMinutes();
+
+    date = `${day}.${month}.${year} ${hours}:${min}`;
 
     const post = new PostModel({
-        userId: userId,
+        receiver: userId,
+        sender: authId,
         text: text,
-        date: date
+        date: date,
+        avatar: avatar,
+        username: username
     })
 
-    post.save( (err, post) => {
-        if(err) {
-            res.send(JSON.stringify({
-                message: 'Ошибка отправки поста!',
-                resultCode: 1
-            }))
-        }
+    UserModel.findById(authId)
+        .then(user => {
+            post.username = user.username;
+            post.avatar = user.avatar.small;
 
-        res.send(JSON.stringify({
-            post,
-            message: 'Пост успешно добавлен!',
-            resultCode: 0
-        }))
+            post.save( (err, post) => {
+                if(err) {
+                    res.send(JSON.stringify({
+                        message: 'Ошибка отправки поста!',
+                        resultCode: 1
+                    }))
+                }
 
-    })
+                res.send(JSON.stringify({
+                    post,
+                    message: 'Пост успешно добавлен!',
+                    resultCode: 0
+                }))
+
+            })
+
+        })
 }
 
 exports.deletePost = (req, res) => {
@@ -84,20 +131,6 @@ exports.deletePost = (req, res) => {
     })
 
 }
-
-exports.editPost = (req, res) => {
-    const postId = req.body.postId;
-    const post = req.body.post;
-
-    PostModel.updateOne({_id: postId}, {$set: {text : post}}, (err, user) => {
-        res.send(JSON.stringify({
-            message: 'Текст успешно изменен!',
-            resultCode: 0
-        }))
-    })
-}
-
-
 
 exports.postTest = (req, res) => {
 

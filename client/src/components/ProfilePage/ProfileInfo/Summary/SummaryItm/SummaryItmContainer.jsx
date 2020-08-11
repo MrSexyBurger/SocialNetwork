@@ -1,34 +1,39 @@
 import React from "react";
 import {connect} from "react-redux";
 import SummaryItm from "./SummaryItm";
+import {compose} from "redux";
+import {HoverBtn} from "../../../../../hoc/HoverBtn";
 
 class SummaryItmContainer extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            isHover: false
-        }
-    }
-
-    toggleHover = () => {
-        this.setState({
-            isHover: !this.state.isHover
-        })
-    }
 
     render() {
-        return <SummaryItm toggleHover={this.toggleHover}
-                           isHover={this.state.isHover}
-                           itmName={this.props.itmName}
-                           count={this.props.friends.length}
-        />
+        let itmCount;
+
+        switch(this.props.itmName){
+            case 'friends': {
+                itmCount = this.props.friendsCount;
+                break;
+            }
+            default:
+                break;
+        }
+
+
+
+        return <SummaryItm itmName={this.props.itmName}
+                           itmCount={itmCount}
+                           isHover={this.props.isHover}
+                           toggleHover={this.props.toggleHover}/>
     }
 }
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile
+        friendsCount: state.profile.info.friendsCount
     }
 }
 
-export default connect(mapStateToProps, null)(SummaryItmContainer);
+export default compose(
+    connect(mapStateToProps, null),
+    HoverBtn
+)(SummaryItmContainer)

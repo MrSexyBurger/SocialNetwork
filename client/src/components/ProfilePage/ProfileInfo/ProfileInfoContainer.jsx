@@ -1,33 +1,19 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo";
+import {connect} from "react-redux";
 
 class ProfileInfoContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isHover: false,
-            isOpened: false
-        }
-    }
-
-    toggleHover = () => {
-        this.setState({isHover: !this.state.isHover});
-    }
-
-    toggleMenu = () => {
-        this.setState({isOpened: !this.state.isOpened});
-    }
-
 
     render() {
-        return (
-            <ProfileInfo {...this.props}
-                         state={this.state}
-                         toggleHover={this.toggleHover}
-                         toggleMenu={this.toggleMenu}
-            />
-        )
+        let profile = this.props.profile;
+        return profile && profile.info && <ProfileInfo info={profile.info}/>
     }
 }
 
-export default ProfileInfoContainer;
+const mapStateToProps = state => {
+    return {
+        profile: state.profile
+    }
+}
+
+export default connect(mapStateToProps, null)(ProfileInfoContainer);

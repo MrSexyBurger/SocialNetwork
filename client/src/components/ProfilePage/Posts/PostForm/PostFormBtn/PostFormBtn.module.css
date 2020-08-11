@@ -1,0 +1,15 @@
+.submitBtn {
+    margin-top: 10px;
+    background: #4A76A8;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+}

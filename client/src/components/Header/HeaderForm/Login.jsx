@@ -22,7 +22,7 @@ class Login extends React.Component {
     }
 
     onSubmit = (formData) => {
-        this.props.login(formData.email, formData.password, formData.rememberMe);
+        this.props.login(formData.email, formData.password);
     }
 
     render(){

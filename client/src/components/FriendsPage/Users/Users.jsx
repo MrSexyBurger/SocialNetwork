@@ -3,6 +3,7 @@ import {calculateAge} from "../../../common/calculateAge";
 import ToggleFriendBtnContainer from "../ToggleFriendBtn/ToggleFriendBtnContainer";
 import React from "react";
 import Loader from "../../common/Loaders/Loader";
+import {NavLink} from "react-router-dom";
 
 
 const Users = props => {
@@ -13,9 +14,9 @@ const Users = props => {
     if (users){
         users = users.map(user => (
             <div className={css.userItm}>
-                <img className={css.avatarImg} src={user.avatar}/>
+                <NavLink to={`/profile/${user.id}`}><img className={css.avatarImg} src={user.avatar}/></NavLink>
                 <div className={css.userInfo}>
-                    <div className={css.userName}>{user.username}</div>
+                    <NavLink to={`/profile/${user.id}`} className={css.userName}>{user.username}</NavLink>
                     <div className={css.age}>{calculateAge(user.birthDate)}</div>
                 </div>
                 <ToggleFriendBtnContainer userId={user.id} friends={user.friends}/>

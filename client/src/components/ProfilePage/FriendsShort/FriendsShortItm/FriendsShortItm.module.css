@@ -1,0 +1,32 @@
+.friendsShortWrap:not(:nth-child(3n)) {
+    margin-right: 20px;
+}
+
+.friendsShortWrap:nth-child(4){
+    margin-top: 12px;
+}
+
+.friendsShortWrap:nth-child(5){
+    margin-top: 12px;
+}
+
+.friendsShortWrap:nth-child(6){
+    margin-top: 12px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.username {
+    font-size: 14px;
+    color: #2A5885;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.hover {
+    filter: brightness(.9);
+}

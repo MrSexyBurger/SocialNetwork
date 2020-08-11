@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postScheme = new Schema({
-    userId: String,
+    receiver: String,
+    sender: String,
+    username: String,
+    avatar: String,
     text: String,
     date: String
 })

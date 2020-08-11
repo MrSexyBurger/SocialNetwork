@@ -1,76 +1,8 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 import css from "./Menu.module.css";
+import ActionBtnContainer from "./ActionBtn/ActionBtnContainer";
 
 const Menu = (props) => {
-
-    let actionList;
-
-    if (props.guest) {
-        actionList = <div className={css.navWrap}>
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('sendMoney')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.sendMoney ? css.hover : ' ')} >Отправить деньги</NavLink>
-            </div>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('notify')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.notify ? css.hover : ' ')} >Уведомлять о записях</NavLink>
-            </div>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('streams')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.streams ? css.hover : ' ')} >Не сообщать о трансляциях</NavLink>
-            </div>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('bookmarks')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.bookmarks ? css.hover : ' ')} >Сохранить в закладках</NavLink>
-            </div>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('news')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.news ? css.hover : ' ')} >Скрывать новости</NavLink>
-            </div>
-
-            <div className={css.line}/>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('report')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.report ? css.hover : ' ')} >Пожаловаться на страницу</NavLink>
-            </div>
-
-        </div>
-    } else {
-        actionList = <div className={css.navWrap}>
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('memories')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.memories ? css.hover : ' ')} >Воспоминания</NavLink>
-            </div>
-
-            <div className={css.navLinkWrap}
-                 onMouseEnter={props.toggleHover('transfers')}
-                 onMouseLeave={props.toggleHover()}
-            >
-                <NavLink to={'/asd'} className={css.nav + ' ' + (props.state.transfers ? css.hover : ' ')} >Денежные переводы</NavLink>
-            </div>
-
-        </div>
-    }
 
     return (
         <div className={css.menu} onMouseLeave={props.toggleMenu}>
@@ -82,7 +14,25 @@ const Menu = (props) => {
                     <span className={css.dot}/>
                 </div>
             </div>
-            {actionList}
+
+            {props.guest
+                ? <div className={css.actionWrap}>
+                    <ActionBtnContainer actionName={'Отправить деньги'}/>
+                    <ActionBtnContainer actionName={'Уведомлять о записях'}/>
+                    <ActionBtnContainer actionName={'Не сообщать о трансляциях'}/>
+                    <ActionBtnContainer actionName={'Сохранить в закладках'}/>
+                    <ActionBtnContainer actionName={'Скрывать новости'}/>
+                    <div className={css.line}/>
+                    <ActionBtnContainer actionName={'Пожаловаться на страницу'}/>
+                </div>
+
+                : <div className={css.actionWrap}>
+                    <ActionBtnContainer actionName={'Воспоминания'}/>
+                    <ActionBtnContainer actionName={'Денежные переводы'}/>
+                </div>
+            }
+
+
         </div>
     )
 }

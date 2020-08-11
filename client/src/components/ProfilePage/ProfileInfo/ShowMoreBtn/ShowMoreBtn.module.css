@@ -1,0 +1,19 @@
+.showMoreBtnWrap {
+    width: 100%;
+}
+
+.showMoreBtn {
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    padding: 5px 0 5px calc(30% + 2px);
+    background: none;
+    color: #3873AF;
+}
+
+.hover {
+    background-color: rgba(153,177,198, 0.2);
+    cursor: pointer;
+}

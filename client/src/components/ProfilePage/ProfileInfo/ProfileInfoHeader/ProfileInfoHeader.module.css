@@ -1,0 +1,26 @@
+.profileInfoHeader {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #D2DDEA;
+    padding-bottom: 15px;
+}
+
+.userNameWrap {
+    padding: 0 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userName {
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.online {
+    font-size: 13px;
+    line-height: 18px;
+    color: gray;
+}

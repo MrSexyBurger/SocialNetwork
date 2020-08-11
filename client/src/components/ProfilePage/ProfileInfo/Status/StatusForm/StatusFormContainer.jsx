@@ -1,33 +1,29 @@
 import React from "react";
 import ReduxStatusForm from "./StatusForm";
 import {connect} from "react-redux";
-import {updateStatus} from "../../../../../redux/profile_reducer";
+import {updateStatus, updateStatusEdit} from "../../../../../redux/profile_reducer";
+import {compose} from "redux";
+import {HoverBtn} from "../../../../../hoc/HoverBtn";
 
 class StatusFormContainer extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            isHover: false
-        }
-    }
-
-    toggleHover = () => {
-        this.setState({isHover: !this.state.isHover})
-    }
 
     onSubmit = (formData) => {
         this.props.updateStatus(formData.status);
     }
 
     render() {
-        return (
-            <ReduxStatusForm isHover={this.state.isHover}
-                             toggleHover={this.toggleHover}
-                             status={this.props.status}
-                             onSubmit={this.onSubmit}/>
-        )
+        if (this.props.statusEdit) return <ReduxStatusForm {...this.props} onSubmit={this.onSubmit} />
+        return null
     }
 }
 
-export default connect(null, {updateStatus})(StatusFormContainer);
+const setStateToProps = state => {
+    return {
+        statusEdit: state.profile.statusEdit
+    }
+}
+
+export default compose(
+    connect(setStateToProps, {updateStatus, updateStatusEdit}),
+    HoverBtn
+)(StatusFormContainer);
