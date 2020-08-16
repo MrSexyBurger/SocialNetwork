@@ -1,65 +1,59 @@
 const UserModel = require('../models/user');
 const PostModel = require('../models/post');
 
-
 exports.profile = (req, res) => {
-    UserModel.findOne({_id: req.params.userId}, (err, profile) => {
-        if (err) return res.sendStatus(400);
-        let profileData = {
-            info: {
-                userId: profile._id,
-                username: profile.username,
-                avatar: profile.avatar,
-                gender: profile.gender,
-                birth: profile.birth,
-                location: profile.location,
-                friendsCount: profile.friends.length
-            },
-            status: profile.status
-        }
 
-        let test = profile.friends;
+        UserModel.findOne({_id: req.params.userId}, (err, profile) => {
+            if (err) return res.sendStatus(400);
+            let profileData = {
+                info: {
+                    userId: profile._id,
+                    username: profile.username,
+                    avatar: profile.avatar,
+                    gender: profile.gender,
+                    birth: profile.birth,
+                    location: profile.location,
+                    friendsCount: profile.friends.length
+                },
+                status: profile.status
+            }
 
-        //test = toString(test).split(',')
+            let test = profile.friends;
 
-        //console.log(test)
+            UserModel.find({_id: test})
+                .limit(6)
+                .then(result => {
+                    const friendsShort = result.map(friend => {
+                        return {
+                            userId: friend._id,
+                            username: friend.username,
+                            avatar: friend.avatar.small
+                        }
+                    });
+
+                    profileData.friendsShort = friendsShort;
+
+                    PostModel.find({receiver: req.params.userId})
+                        //.skip(2)
+                        //.limit(3)
+                        .then(posts => {
+                            if (err) return res.sendStatus(400);
+
+                            profileData.posts = posts;
+
+                            res.send(JSON.stringify({
+                                data: profileData,
+                                resultCode: 0
+                            }));
 
 
+                        })
 
-        UserModel.find({ _id: test} )
-            .limit(6)
-            .then(result => {
-            const friendsShort = result.map(friend => {
-                return {
-                    userId: friend._id,
-                    username: friend.username,
-                    avatar: friend.avatar.small
-                }
-            });
-
-            profileData.friendsShort = friendsShort;
-
-            PostModel.find({receiver: req.params.userId})
-                //.skip(2)
-                //.limit(3)
-                .then(posts => {
-                    if (err) return res.sendStatus(400);
-
-                    profileData.posts = posts;
-
-                    res.send(JSON.stringify({
-                        data: profileData,
-                        resultCode: 0
-                    }));
                 })
-
         })
 
 
 
-
-
-    })
 }
 
 exports.editStatus = (req, res) => {
@@ -72,6 +66,7 @@ exports.editStatus = (req, res) => {
 }
 
 exports.postPost = (req, res) => {
+
     const userId = req.body.userId;
     const authId = req.cookies.auth;
     const text = req.body.post;

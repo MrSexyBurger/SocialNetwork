@@ -11,8 +11,6 @@ const FriendsShort = props => {
         />
     });
 
-    console.log(friends && friends.length)
-
     return (
         <div className={css.friendsShortWrap}>
             <div className={css.friendsShortHeader}>

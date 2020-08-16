@@ -6,7 +6,7 @@ class ProfileInfoContainer extends React.Component {
 
     render() {
         let profile = this.props.profile;
-        return profile && profile.info && <ProfileInfo info={profile.info}/>
+        return profile && profile.info && <ProfileInfo info={profile.info} online={profile.online}/>
     }
 }
 

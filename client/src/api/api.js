@@ -1,4 +1,6 @@
 import * as axios from 'axios';
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:9000');
 
 const instance = axios.create({
     withCredentials: true,
@@ -55,3 +57,21 @@ export const usersApi = {
         return instance.delete(`follow/${userId}`)
     }
 }
+
+//работа с сокетами
+
+export const newVisitor = (username, avatar, id) => {
+    //socket.on('visitors', visitors => console.log(visitors));
+    socket.emit('new visitor', {id, username, avatar});
+}
+
+export const emitUserOnline = (id) => {
+    socket.emit('isUserOnline', id);
+}
+
+export const userOnlineStatus = (callback) => {
+    socket.on('isUserOnline', online => callback(online, null, null) );
+    socket.on('userDisconnected', offlineId => callback(null, offlineId));
+    socket.on('newUserOnline', onlineId => callback(null, null, onlineId))
+}
+

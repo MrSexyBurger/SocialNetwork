@@ -1,5 +1,5 @@
 import React from "react";
-import {authAPI} from "../api/api";
+import {authAPI, newVisitor} from "../api/api";
 
 
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -31,7 +31,9 @@ export const getAuthUserData = () => (dispatch) => {
     authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0){
+                let data = response.data.data;
                 let {id, login, email, avatar} = response.data.data;
+                newVisitor(data.login, data.avatar, data.id);
                 dispatch(setAuthUserData(id, email, login, avatar, true));
             }
         })

@@ -9,7 +9,7 @@ import ProfileInfoHeader from "./ProfileInfoHeader/ProfileInfoHeader";
 const ProfileInfo = (props) => {
     return (
         <div className={css.profileInfoWrap}>
-            <ProfileInfoHeader info={props.info}/>
+            <ProfileInfoHeader info={props.info} online={props.online}/>
             <ProfileShort info={props.info}/>
             <ShowMoreBtnContainer/>
             <ProfileFullContainer info={props.info}/>

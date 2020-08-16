@@ -3,8 +3,9 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import ProfilePage from "./ProfilePage";
-import {getUserProfile, updateGuest} from "../../redux/profile_reducer";
+import {getUserProfile, updateGuest, updateOnline} from "../../redux/profile_reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {emitUserOnline, userOnlineStatus} from "../../api/api";
 
 
 class ProfilePageContainer extends React.Component {
@@ -19,12 +20,11 @@ class ProfilePageContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         this.props.getUserProfile(userId);
+        emitUserOnline(userId);
+        userOnlineStatus(this.props.updateOnline);
     }
 
     componentWillReceiveProps (props) {
-        /*if (this.state.postId !== props._id) {
-            this.setState({postId: props._id});
-        }*/
         let userId = props.match.params.userId;
         let authId = props.authId;
         let guest = authId !== userId;
@@ -32,10 +32,12 @@ class ProfilePageContainer extends React.Component {
         if (this.state.pathname !== props.location.pathname){
             this.setState({pathname: props.location.pathname})
             this.props.getUserProfile(userId);
+            emitUserOnline(userId)
         }
     }
 
     render() {
+
         return (
             <ProfilePage/>
         )
@@ -49,7 +51,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, updateGuest}),
+    connect(mapStateToProps, {getUserProfile, updateGuest, updateOnline}),
     withRouter,
     withAuthRedirect
 )(ProfilePageContainer)
