@@ -95,3 +95,13 @@ export const postInput = ({input, meta, ...props}) => {
         </div>
     )
 }
+
+export const messageInput = ({input, meta, ...props}) => {
+    const hasError = meta.touched && meta.error;
+
+    return (
+        <div className={css.messageInputWrap + ' ' + ' ' + (hasError ? css.error : '')}>
+            <input {...input} {...props} />
+        </div>
+    )
+}

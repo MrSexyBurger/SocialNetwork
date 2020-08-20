@@ -4,6 +4,7 @@ import css from './Content.module.css';
 import NavbarContainer from "../Navbar/NavbarContainer";
 import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
 import FriendsPageContainer from "../FriendsPage/FriendsPageContainer";
+import MessagesPageContainer from "../MessagesPage/MessagesPageContainer";
 
 const Content = () => {
     return (
@@ -13,6 +14,7 @@ const Content = () => {
                 <div className={css.PageContent}>
                     <Route path='/profile/:userId?' render={() => <ProfilePageContainer/>}/>
                     <Route path={'/friends'} render={() => <FriendsPageContainer/>}/>
+                    <Route path={'/messages'} render={() => <MessagesPageContainer/>}/>
                 </div>
             </div>
         </div>

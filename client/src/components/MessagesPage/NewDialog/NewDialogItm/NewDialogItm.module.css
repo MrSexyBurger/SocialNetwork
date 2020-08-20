@@ -1,0 +1,41 @@
+.newDialogItm {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: -1px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    position: relative;
+}
+
+.newDialogItm::before {
+    content: '';
+    width: calc(100% - 40px);
+    height: 1px;
+    display: block;
+    background: #D2DDEA;
+    top: -1px;
+    left: 20px;
+    position: absolute;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+.username {
+    margin-left: 10px;
+    color: rgb(42, 88, 133);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.hover {
+    border-top: 1px solid #D2DDEA;
+    border-bottom: 1px solid #D2DDEA;
+    background: #f7f9fa;
+    cursor: pointer;
+}

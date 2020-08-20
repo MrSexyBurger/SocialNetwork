@@ -1,0 +1,15 @@
+.messagesPageWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100% - 20px);
+    margin-left: 20px;
+}
+
+.messagesPageL {
+    width: 550px;
+}
+
+.messagesPageR {
+    width: calc(100% - 565px);
+}

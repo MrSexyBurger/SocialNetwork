@@ -1,0 +1,35 @@
+.messagesItm {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 40px 10px 25px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.messageWrap {
+    margin-left: 14px;
+}
+
+.messageInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 2px;
+}
+
+.date {
+    margin-left: 10px;
+    font-size: 14px;
+    color: gray;
+}
+
+.messageBody {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 2px;
+}

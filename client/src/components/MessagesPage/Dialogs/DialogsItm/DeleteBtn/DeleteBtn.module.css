@@ -1,0 +1,39 @@
+.deleteBtn {
+    color: gray;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.hover {
+    color: black;
+    cursor: pointer;
+}
+
+.hover::after {
+    content: 'Удалить';
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background: black;
+    color: white;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.hover::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    right: -3px;
+    border-bottom: 8px solid black;
+    border-left:   8px solid transparent;
+    border-right:  8px solid transparent;
+}

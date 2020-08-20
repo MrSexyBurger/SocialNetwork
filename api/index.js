@@ -121,7 +121,7 @@ const emitIsUserOnline = (id, socket) => {
 
 io.on('connection', (socket) => {
 
-    socket.on('new visitor', user => {
+    /*socket.on('new visitor', user => {
         socket.user = user;
         socket.broadcast.emit('newUserOnline', user.id);
     })
@@ -134,7 +134,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         let connectionMessage = socket.user.id;
         io.emit('userDisconnected' , connectionMessage)
-    })
+    })*/
 
 });
 

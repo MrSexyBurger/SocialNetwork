@@ -1,0 +1,63 @@
+.dialogsItm {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 15px 30px 15px 20px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    margin-top: -1px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dialogWrap {
+    margin-left: 14px;
+    width: 100%;
+    position: relative;
+}
+
+.dialogWrap::before {
+    content: '';
+    display: block;
+    height: 1px;
+    width: calc(100% + 30px);
+    background: #D2DDEA;
+    position: absolute;
+    top: -22px
+}
+
+.dialogInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.username {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 14px;
+    color: gray;
+}
+
+.message {
+    text-align: left;
+    margin-top: 4px;
+    color: gray;
+    font-size: 14px;
+}
+
+.hover {
+    border-top: 1px solid #D2DDEA;
+    border-bottom: 1px solid #D2DDEA;
+    background: #f7f9fa;
+    cursor: pointer;
+}

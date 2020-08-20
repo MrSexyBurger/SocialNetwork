@@ -1,0 +1,45 @@
+.messagesWrap {
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.messagesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dialogUsername {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.onlineStatus {
+    color: gray;
+    font-size: 14px;
+}
+
+.messagesItms {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 20px 0;
+    height: calc(100% - 100px);
+}
+
+.dialogUserActionsWrap {
+    width: 148px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
