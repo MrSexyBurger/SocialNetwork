@@ -55,11 +55,13 @@ const authRouter = require('./routes/authRouter');
 const usersRouter = require('./routes/usersRouter')
 const followRouter = require('./routes/followRouter');
 const profileRouter = require('./routes/profileRouter');
+const dialogsRouter = require('./routes/dialogsRouter');
 
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/follow', followRouter);
 app.use('/profile', profileRouter);
+app.use('/dialogs', dialogsRouter);
 
 //for test only
 app.get('/', (req, res) => {

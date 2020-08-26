@@ -8,6 +8,7 @@ const BackBtn = props => {
         <button className={css.backToDialogsBtn + ' ' + (isHover ? css.hover : '')}
                 onMouseEnter={props.toggleHover}
                 onMouseLeave={props.toggleHover}
+                onClick={props.setCurrentBlock('dialogs')}
         >
             <img className={css.arrowImg} src={arrow}/>
             Назад

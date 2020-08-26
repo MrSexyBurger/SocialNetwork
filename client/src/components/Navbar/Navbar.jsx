@@ -22,12 +22,12 @@ const Navbar = (props) => {
                      onMouseLeave={props.toggleHover()}
             ><img src={profileImg}/>Моя страница</NavLink>
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.feedHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.feedHover ? css.hover : '')}
                      to='/feed'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('feed')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={feedImg}/>Новости</NavLink>
+            ><img src={feedImg}/>Новости</NavLink>*/}
 
             <NavLink className={css.NavLinkItm + ' ' + (props.state.messagesHover ? css.hover : '')}
                      to='/messages'
@@ -43,40 +43,40 @@ const Navbar = (props) => {
                      onMouseLeave={props.toggleHover()}
             ><img src={friendsImg}/>Друзья</NavLink>
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.groupsHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.groupsHover ? css.hover : '')}
                      to='/groups'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('groups')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={groupsImg}/>Сообщества</NavLink>
+            ><img src={groupsImg}/>Сообщества</NavLink>*/}
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.photosHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.photosHover ? css.hover : '')}
                      to='/photos'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('photos')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={photosImg}/>Фотографии</NavLink>
+            ><img src={photosImg}/>Фотографии</NavLink>*/}
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.musicHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.musicHover ? css.hover : '')}
                      to='/music'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('music')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={musicImg}/>Музыка</NavLink>
+            ><img src={musicImg}/>Музыка</NavLink>*/}
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.videosHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.videosHover ? css.hover : '')}
                      to='/videos'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('videos')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={videoImg}/>Видео</NavLink>
+            ><img src={videoImg}/>Видео</NavLink>*/}
 
-            <NavLink className={css.NavLinkItm + ' ' + (props.state.gamesHover ? css.hover : '')}
+            {/*<NavLink className={css.NavLinkItm + ' ' + (props.state.gamesHover ? css.hover : '')}
                      to='/games'
                      activeClassName={css.active}
                      onMouseEnter={props.toggleHover('games')}
                      onMouseLeave={props.toggleHover()}
-            ><img src={gamesImg}/>Игры</NavLink>
+            ><img src={gamesImg}/>Игры</NavLink>*/}
 
         </nav>
     )

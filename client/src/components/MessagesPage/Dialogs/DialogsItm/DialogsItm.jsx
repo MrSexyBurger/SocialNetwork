@@ -1,22 +1,32 @@
 import React from "react";
 import css from './DialogsItm.module.css';
-import avatar from '../../../../assets/images/avatar.jpg';
 import DeleteBtnContainer from "./DeleteBtn/DeleteBtnContainer";
 
 const DialogsItm = props => {
     const isHover = props.isHover;
+    const dialog = props.dialog;
+    const message = dialog.message;
+    let date = null;
+
+    if (message) {
+        date = message.date.split(' ');
+        date = `${date[0]} в ${date[1]}`;
+    }
+
+
     return (
         <div className={css.dialogsItm + ' ' + (isHover ? css.hover :'')}
              onMouseEnter={props.toggleHover}
              onMouseLeave={props.toggleHover}
+             onClick={props.getDialog(dialog._id)}
         >
-            <img src={avatar} className={css.avatar}/>
+            <img src={dialog.avatar} className={css.avatar}/>
             <div className={css.dialogWrap}>
                 <div className={css.dialogInfo}>
-                    <div className={css.username}>Божена Бигун</div>
-                    <div className={css.date}>20.08.2020 в 12:53</div>
+                    <div className={css.username}>{dialog.username}</div>
+                    <div className={css.date}>{date}</div>
                 </div>
-                <p className={css.message}>Бла бла бла, я хомяк!</p>
+                <p className={css.message}>{message ? message.text : 'Сообщений пока нет...'}</p>
             </div>
             {isHover ? <DeleteBtnContainer/> : null}
         </div>

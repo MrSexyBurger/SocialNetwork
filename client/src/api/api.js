@@ -58,6 +58,24 @@ export const usersApi = {
     }
 }
 
+export const dialogsApi = {
+    getDialogs(){
+      return instance.get('/dialogs');
+    },
+    getDialog(dialogId){
+        return instance.get(`/dialogs/getDialog/${dialogId}`);
+    },
+    getNewDialogs(){
+        return instance.get('/dialogs/newDialogs');
+    },
+    postDialog(recipientId){
+        return instance.post('/dialogs/postDialog', {recipientId});
+    },
+    putMessage(dialogId, recipientId, message){
+        return instance.put('/dialogs/putMessage', {dialogId, recipientId, message})
+    }
+}
+
 //работа с сокетами
 
 export const newVisitor = (username, avatar, id) => {

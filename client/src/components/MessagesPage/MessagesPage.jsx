@@ -5,26 +5,15 @@ import DialogsContainer from "./Dialogs/DialogsContainer";
 import NewDialogContainer from "./NewDialog/NewDialogContainer";
 
 const MessagesPage = props => {
+    let dialogs = props.dialogs
+    let currentBlock = dialogs.currentBlock;
+
     return (
-       /* <div className={css.friendsPageWrap}>
-            <div className={css.friendsPageL}>
-                <div className={css.friendliest}>
-                    <div className={css.header}>
-                        Поиск друзей
-                        <button className={css.extSearch}>Расширенный поиск</button>
-                    </div>
-                    <UsersContainer/>
-                </div>
-            </div>
-            <div className={css.friendsPageR}>
-                <PageMenuContainer/>
-            </div>
-        </div>*/
         <div className={css.messagesPageWrap}>
             <div className={css.messagesPageL}>
-                <MessagesContainer/>
-                {/*<DialogsContainer/>*/}
-                {/*<NewDialogContainer/>*/}
+                {currentBlock === 'messages'   ? <MessagesContainer  dialogs={dialogs} />  : null}
+                {currentBlock === 'dialogs'    ? <DialogsContainer dialogs={dialogs}   />   : null}
+                {currentBlock === 'newDialogs' ? <NewDialogContainer dialogs={dialogs} /> : null}
             </div>
             <div className={css.messagesPageR}>
 

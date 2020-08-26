@@ -1,9 +1,13 @@
 import React from "react";
 import Messages from "./Messages";
+import {connect} from "react-redux";
 
 class MessagesContainer extends React.Component {
     render() {
-        return <Messages {...this.props} />
+        let userInfo = this.props.dialogs.userInfo;
+        let messages = this.props.dialogs.messages;
+
+        return <Messages userInfo={userInfo} messages={messages} />
     }
 }
 

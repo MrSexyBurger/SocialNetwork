@@ -9,9 +9,10 @@ const NewDialogItm = props => {
         <div className={css.newDialogItm + ' ' + (isHover ? css.hover : '') }
              onMouseEnter={props.toggleHover}
              onMouseLeave={props.toggleHover}
+             onClick={props.createDialog(props.id)}
         >
-            <img src={avatar} className={css.avatar}/>
-            <div className={css.username}>Божена Бигун</div>
+            <img src={props.avatar} className={css.avatar}/>
+            <div className={css.username}>{props.username}</div>
         </div>
     )
 }
