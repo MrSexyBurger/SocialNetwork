@@ -9,9 +9,7 @@ class DialogsContainer extends React.Component {
     }
 
     render() {
-        let dialogs = this.props.dialogs.dialogs;
-
-        return <Dialogs dialogs={dialogs}/>
+        return <Dialogs dialogs={this.props.dialogs.dialogs}/>
     }
 }
 

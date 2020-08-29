@@ -1,0 +1,38 @@
+.pageMenu {
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    position: relative;
+    padding: 5px 0;
+}
+
+.line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 29px;
+    background: #4A76A8;
+    transition: 0.3s ease top;
+}
+
+.linePos1{
+    top: 5px;
+}
+
+.linePos2{
+    top: 34px;
+}
+
+.linePos3{
+    top: 72px;
+}
+
+.userBtnLine {
+    background: #4A76A8;
+    opacity: 0.25;
+    height: 1px;
+    width: calc(100% - 30px);
+    margin: 4px auto;
+}

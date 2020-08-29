@@ -104,7 +104,7 @@ export const putMessage = (dialogId, recipientId, message) => (dispatch) => {
         })
 }
 
-export const setCurrentBlock = (block) => (dispatch) => () => {
+export const changeCurrentBlock = (block) => (dispatch) => () => {
     dispatch(setBlock(block));
 }
 

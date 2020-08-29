@@ -3,7 +3,8 @@ import BackBtn from "./BackBtn";
 import {compose} from "redux";
 import {HoverBtn} from "../../../hoc/HoverBtn";
 import {connect} from "react-redux";
-import {setCurrentBlock} from "../../../redux/dialogs_reducer";
+import {changeCurrentBlock} from "../../../redux/dialogs_reducer";
+
 
 class BackBtnContainer extends React.Component {
     render() {
@@ -12,6 +13,6 @@ class BackBtnContainer extends React.Component {
 }
 
 export default compose(
-    connect(null, {setCurrentBlock}),
+    connect(null, {changeCurrentBlock}),
     HoverBtn
 )(BackBtnContainer);

@@ -4,7 +4,6 @@ import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class FriendsPageContainer extends React.Component {
-
     render() {
         return <FriendsPage />
     }

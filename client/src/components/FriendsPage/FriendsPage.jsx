@@ -12,7 +12,7 @@ const FriendsPage = (props) => {
                         Поиск друзей
                         <button className={css.extSearch}>Расширенный поиск</button>
                     </div>
-                        <UsersContainer/>
+                       <UsersContainer/>
                 </div>
             </div>
             <div className={css.friendsPageR}>

@@ -3,20 +3,23 @@ import css from './MessagesPage.module.css';
 import MessagesContainer from "./Messages/MessagesContainer";
 import DialogsContainer from "./Dialogs/DialogsContainer";
 import NewDialogContainer from "./NewDialog/NewDialogContainer";
+import PageMenu from "./MessagesPageMenu/PageMenu";
+
 
 const MessagesPage = props => {
-    let dialogs = props.dialogs
-    let currentBlock = dialogs.currentBlock;
+    const dialogs = props.dialogs;
+    const currentBlock = dialogs.currentBlock;
+    const userInfo = dialogs.userInfo;
 
     return (
         <div className={css.messagesPageWrap}>
             <div className={css.messagesPageL}>
-                {currentBlock === 'messages'   ? <MessagesContainer  dialogs={dialogs} />  : null}
-                {currentBlock === 'dialogs'    ? <DialogsContainer dialogs={dialogs}   />   : null}
-                {currentBlock === 'newDialogs' ? <NewDialogContainer dialogs={dialogs} /> : null}
+                {currentBlock === 'messages'     && <MessagesContainer  dialogs={dialogs}  />}
+                {currentBlock === 'dialogs'      && <DialogsContainer dialogs={dialogs}    />}
+                {currentBlock === 'createDialog' && <NewDialogContainer dialogs={dialogs}  />}
             </div>
             <div className={css.messagesPageR}>
-
+                <PageMenu currentBlock={currentBlock} userInfo={userInfo} />
             </div>
         </div>
     )

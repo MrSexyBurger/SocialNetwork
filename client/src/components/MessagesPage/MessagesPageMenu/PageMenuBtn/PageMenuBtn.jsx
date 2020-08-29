@@ -1,5 +1,6 @@
 import React from "react";
 import css from './PageMenuBtn.module.css';
+import {changeCurrentBlock} from "../../../../redux/dialogs_reducer";
 
 
 const PageMenuBtn = props => {
@@ -10,7 +11,7 @@ const PageMenuBtn = props => {
         <button className={css.menuBtn + ' ' + (isHover ? css.hover : '') + ' ' + (isActive ? css.active : '')}
                 onMouseEnter={props.toggleHover}
                 onMouseLeave={props.toggleHover}
-                onClick={props.changeSection}
+                onClick={props.changeCurrentBlock(props.blockName)}
         >{props.btnName}</button>
     )
 }

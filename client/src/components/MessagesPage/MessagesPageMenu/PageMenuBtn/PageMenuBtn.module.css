@@ -1,0 +1,20 @@
+.menuBtn {
+    color: #2A5885;
+    font-size: 13px;
+    font-weight: 400;
+    width: 100%;
+    text-align: left;
+    padding: 7px 15px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.menuBtn.hover {
+    background: #E8EEF5;
+    cursor: pointer;
+}
+
+.menuBtn.active {
+    background: #E8EEF5;
+}

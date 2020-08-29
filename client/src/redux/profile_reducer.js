@@ -16,7 +16,7 @@ const SET_ONLINE = 'SET_ONLINE';
 let initialState = {
     info: null,
     status: null,
-    guest: true,
+    guest: false,
     statusEdit: false,
     fullInfo: false,
     posts: null,
