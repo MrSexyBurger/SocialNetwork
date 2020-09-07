@@ -46,3 +46,7 @@ exports.deleteAll = (req, res) => {
         console.log('Все пользователи удалены!!');
     })
 }
+
+exports.all = (req, res) => {
+    UserModel.find().then(result => res.send(result))
+}

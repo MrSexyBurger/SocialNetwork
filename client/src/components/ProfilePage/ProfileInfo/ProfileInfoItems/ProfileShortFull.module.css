@@ -36,13 +36,19 @@
     margin-top: 5px;
 }
 
+.ItmLabel:not(:first-child) {
+    margin-top: 20px;
+}
+
+
+
 .ItmLabel > span {
     font-size: 13px;
     line-height: 20px;
 }
 
 .line {
-    width: 100%;
+    width: 365px;
     height: 1px;
     background-color: #D2DDEA;
     margin-left: 10px;

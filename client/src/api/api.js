@@ -43,6 +43,12 @@ export const profileApi = {
     },
     deletePost(postId){
         return instance.delete(`profile/posts/${postId}`);
+    },
+    editInfo(info){
+        return instance.put('profile/info/editInfo', {info});
+    },
+    getInfo(){
+        return instance.get('/profile/info/getInfo');
     }
 }
 

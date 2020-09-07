@@ -13,7 +13,9 @@ exports.profile = (req, res) => {
                     gender: profile.gender,
                     birth: profile.birth,
                     location: profile.location,
-                    friendsCount: profile.friends.length
+                    friendsCount: profile.friends.length,
+                    job: profile.job,
+                    education: profile.education
                 },
                 status: profile.status
             }
@@ -161,3 +163,54 @@ exports.delAll = (req, res) => {
         }))
     })
 }
+
+exports.editInfo = (req, res) => {
+    const userId = req.cookies.auth;
+    const info = req.body.info;
+    //let arr = {firstName, surname, gender, country, city, school, university, organisation, faculty, profession, ...req.body}
+
+
+    let profileInfo = {
+        username: info.firstname + ' ' + info.surname,
+        location: {
+            country: info.country,
+            city: info.city,
+        },
+        job: {
+            organisation: info.organisation,
+            profession: info.profession,
+        },
+        education: {
+            school: info.school,
+            university: info.university,
+            faculty: info.faculty,
+        },
+        gender: info.gender,
+        birth: info.birth,
+    }
+
+    UserModel.updateOne({_id: userId})
+        .set(profileInfo)
+        .then(result => {
+            console.log(profileInfo)
+            if (result){
+                res.send(JSON.stringify({resultCode: 0}))
+            } else {
+                res.send(JSON.stringify({resultCode: 1}))
+            }
+        })
+}
+
+
+exports.getInfo = (req, res) => {
+    const authId = req.cookies.auth;
+    UserModel.findById(authId)
+        .then(result => {
+            res.send(JSON.stringify({
+                    info: result,
+                    resultCode: 0
+                }
+            ))
+        })
+}
+

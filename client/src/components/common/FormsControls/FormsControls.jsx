@@ -5,6 +5,12 @@ import DayOptions from "../../RegistrationPage/RegistrationForm/Options/DayOprti
 import MonthOptions from "../../RegistrationPage/RegistrationForm/Options/MonthOptions";
 import YearOptions from "../../RegistrationPage/RegistrationForm/Options/YearOptions";
 
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './DatePicker.css';
+
+
 export const Input = ({input, meta, ...props}) => {
     const hasError = meta.touched && meta.error;
 
@@ -105,3 +111,57 @@ export const messageInput = ({input, meta, ...props}) => {
         </div>
     )
 }
+
+export const editInput = ({input, meta, position, ...props}) => {
+    const hasError = meta.touched && meta.error;
+
+    return (
+        <div className={css.editInputWrap + ' ' + ( hasError ? css.error : '') }>
+            <input {...input} {...props} />
+
+            {hasError && <ErrorContainer size='small' position={position} error={meta.error} />}
+        </div>
+    )
+}
+
+export class renderDatePicker extends React.Component {
+
+    state = {
+        startDate: new Date(`12.7.1991`)
+    };
+
+    /*componentDidMount() {
+        this.props.changeDate('7.12.1991');
+    }*/
+
+
+    handleChange = date => {
+        this.setState({
+            startDate: date
+        });
+
+        let fullDate = new Date(date);
+        let month = fullDate.getMonth() + 1;
+        let day = fullDate.getDate();
+        let year = fullDate.getFullYear();
+
+        month = month < 10 ? `0${month}` : month;
+
+        let birth = `${day}.${month}.${year}`;
+
+        this.props.changeDate(birth);
+    };
+
+    render() {
+        return (
+            <div className={css.DatePickerWrap} >
+                <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                    dateFormat={'dd.MM.yyyy'}
+                />
+            </div>
+        );
+    }
+}
+

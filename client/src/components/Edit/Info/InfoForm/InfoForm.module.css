@@ -1,0 +1,55 @@
+.InfoFormWrap {
+    padding: 15px;
+}
+
+.sectionLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionLabel:not(:first-child) {
+    margin-top: 15px;
+}
+
+.sectionLabelText {
+    font-size: 14px;
+    font-weight: 500;
+    color: gray;
+}
+
+.sectionLabelLine {
+    width: calc(100% - 120px);
+    height: 1px;
+    opacity: 0.5;
+    background: gray;
+
+}
+
+.usernameWrap {
+    display: flex;
+    margin-top: 15px;
+}
+
+.birthWrap {
+    margin-top: 15px;
+}
+
+.genderWrap {
+    display: flex;
+    margin-top: 6px;
+}
+
+.locationWrap {
+    display: flex;
+    margin-top: 15px;
+}
+
+.schoolWrap{
+    margin-top: 15px;
+}
+
+.submitBtnWrap {
+    display: flex;
+    margin-top: 15px;
+}

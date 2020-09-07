@@ -1,0 +1,9 @@
+.react-datepicker__input-container {
+    width: 70px;
+}
+
+.react-datepicker__input-container > input {
+    color: gray;
+    text-align: center;
+    width: 100%;
+}

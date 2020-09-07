@@ -6,8 +6,8 @@ profileRouter.get('/:userId', profileController.profile);
 profileRouter.put('/status', profileController.editStatus);
 profileRouter.delete('/posts/:postId', profileController.deletePost);
 profileRouter.post('/posts', profileController.postPost);
-
-
+profileRouter.put('/info/editInfo', profileController.editInfo);
+profileRouter.get('/info/getInfo', profileController.getInfo)
 
 
 //for dev only!

@@ -5,7 +5,7 @@ import {usersApi} from "../api/api";
 const SET_USERS = 'SET_USERS';
 const PUSH_NEW_FRIEND = 'PUSH_NEW_FRIEND';
 const PULL_NEW_FRIEND = 'PULL_NEW_FRIEND';
-const SET_SECTION = 'SET_SECTION';
+const SET_USERS_SECTION = 'SET_USERS_SECTION';
 const SET_LOADING = 'SET_LOADING';
 
 let initialState = {
@@ -22,10 +22,10 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users,
             }
-        case SET_SECTION: {
+        case SET_USERS_SECTION: {
             return {
                 ...state,
-                currentSection: action.sectionName
+                currentSection: action.section
             }
         }
 
@@ -82,17 +82,17 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const pushFriend = (userId, authId) => ({type: PUSH_NEW_FRIEND, userId, authId})
-export const pullFriend = (userId, authId) => ({type: PULL_NEW_FRIEND, userId, authId})
-export const setSection = (sectionName) => ({type: SET_SECTION, sectionName});
-export const setLoading = (isLoading) => ({type: SET_LOADING, isLoading});
+const setUsers = (users) => ({type: SET_USERS, users});
+const pushFriend = (userId, authId) => ({type: PUSH_NEW_FRIEND, userId, authId})
+const pullFriend = (userId, authId) => ({type: PULL_NEW_FRIEND, userId, authId})
+const setSection = (section) => ({type: SET_USERS_SECTION, section});
+const setLoading = (isLoading) => ({type: SET_LOADING, isLoading});
 
-export const getUsers = (sectionName) => (dispatch) => {
-    dispatch(setSection(sectionName));
+export const getUsers = (section) => (dispatch) => {
+    dispatch(setSection(section));
     dispatch(setLoading(true));
     dispatch(setUsers(null))
-    usersApi.getUsers(sectionName)
+    usersApi.getUsers(section)
         .then(response => {
             dispatch(setUsers(response.data.users));
             dispatch(setLoading(false));

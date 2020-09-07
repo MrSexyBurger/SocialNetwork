@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 class ProfileFullContainer extends React.Component {
     render() {
+        //console.log(this.props.info)
         return this.props.fullInfo && <ProfileFull info={this.props.info}/>
     }
 }

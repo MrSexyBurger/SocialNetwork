@@ -10,6 +10,15 @@ const userScheme = new Schema({
         country: {type: String, default: ''},
         city: {type: String, default: ''},
     },
+    job: {
+        organisation: {type: String, default: ''},
+        profession: {type: String, default: ''},
+    },
+    education: {
+        school: {type: String, default: ''},
+        university: {type: String, default: ''},
+        faculty: {type: String, default: ''},
+    },
     gender: String,
     birth: String,
     status: {type: String, default: 'тестовый комментарий!'},

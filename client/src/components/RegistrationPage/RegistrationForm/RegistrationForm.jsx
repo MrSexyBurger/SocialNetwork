@@ -75,7 +75,7 @@ let RegistrationReduxForm = (props) => {
                         <div className={css.gender}>
                             <div className={css.genderFieldsWrap}>
                                 <Field name={'gender'}  type='radio' value={'male'} validate={required} component={genderInput} />
-                                <Field name={'gender'}  type='radio' value={'female'} validate={required} component={genderInput} />
+                                <Field name={'gender'}  type='radio' value={'female'} validate={required}  component={genderInput} />
                             </div>
                             {genderError ? <ErrorContainer size='medium' position={'left'} error={'Укажите ваш пол!'} /> : null}
                         </div>
