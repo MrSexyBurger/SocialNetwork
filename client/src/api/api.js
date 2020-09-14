@@ -49,6 +49,22 @@ export const profileApi = {
     },
     getInfo(){
         return instance.get('/profile/info/getInfo');
+    },
+    postAvatar(formData){
+        //return instance.post('/profile/avatar', {file});
+
+        /*return axios.post('/profile/avatar', formData,
+            {
+                withCredentials: true,
+                baseURL: 'http://localhost:9000/',
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            }
+        );*/
+
+
+
     }
 }
 

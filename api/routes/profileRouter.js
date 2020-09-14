@@ -8,6 +8,7 @@ profileRouter.delete('/posts/:postId', profileController.deletePost);
 profileRouter.post('/posts', profileController.postPost);
 profileRouter.put('/info/editInfo', profileController.editInfo);
 profileRouter.get('/info/getInfo', profileController.getInfo)
+profileRouter.post('/avatar', profileController.postAvatar);
 
 
 //for dev only!

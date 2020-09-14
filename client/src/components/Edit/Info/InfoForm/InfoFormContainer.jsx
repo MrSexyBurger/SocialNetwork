@@ -1,6 +1,6 @@
 import React from "react";
 import InfoForm from "./InfoForm";
-import {getEditInfo, saveInfo} from "../../../../redux/edit_reducer";
+import {getEditInfo, saveInfo, updateSaving} from "../../../../redux/edit_reducer";
 import {connect} from "react-redux";
 
 class InfoFormContainer extends React.Component {
@@ -15,14 +15,15 @@ class InfoFormContainer extends React.Component {
 
 
     render() {
-        if (this.props.info) return <InfoForm onSubmit={this.onSubmit} info={this.props.info} />
+        if (this.props.info) return <InfoForm onSubmit={this.onSubmit} info={this.props.info} saving={this.props.saving} />
         return null
     }
 }
 
 const mapStateToProps = state => {
     return {
-        info: state.edit.info
+        info: state.edit.info,
+        saving: state.edit.saving
     }
 }
 

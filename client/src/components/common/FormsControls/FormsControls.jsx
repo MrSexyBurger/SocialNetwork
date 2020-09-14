@@ -9,6 +9,8 @@ import YearOptions from "../../RegistrationPage/RegistrationForm/Options/YearOpt
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './DatePicker.css';
+import {connect} from "react-redux";
+import {updateNewAvatarUrl} from "../../../redux/edit_reducer";
 
 
 export const Input = ({input, meta, ...props}) => {
@@ -165,3 +167,54 @@ export class renderDatePicker extends React.Component {
     }
 }
 
+
+
+/*
+export const avatarInput = ({input, meta, position, ...props}) => {
+    const hasError = meta.touched && meta.error;
+
+    return (
+        <div className={css.editInputWrap}>
+            <input {...input} {...props} />
+        </div>
+    )
+}
+*/
+
+class AvatarFileInput extends React.Component{
+    constructor(props) {
+        super(props)
+        this.onChange = this.onChange.bind(this)
+    }
+
+    onChange(e) {
+        const { input: { onChange } } = this.props
+        let file = e.target.files[0];
+        onChange(file)
+
+        let path = (window.URL || window.webkitURL).createObjectURL(file);
+
+        this.props.updateNewAvatarUrl(path)
+
+
+
+    }
+
+    render(){
+        const { input: { value } } = this.props
+        const {input,label, required, meta, } = this.props  //whatever props you send to the component from redux-form Field
+        return(
+            <div><label>{label}</label>
+                <div>
+                    <input
+                        type='file'
+                        accept='.jpg, .png, .jpeg'
+                        onChange={this.onChange}
+                    />
+                </div>
+            </div>
+        )
+    }
+}
+
+export default connect(null, {updateNewAvatarUrl})(AvatarFileInput);

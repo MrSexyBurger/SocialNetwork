@@ -5,6 +5,7 @@ const http = require('http').Server(app); //создаём http для сокк�
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const multer = require('multer'); //для передачи файлов
 
 const io = require('socket.io')(http); // http передаём соккету
 
@@ -48,6 +49,23 @@ app.all('*', function(req, res,next) {
 
 
 });
+
+
+
+
+var storageConfig = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "uploads");
+    },
+    filename: (req, file, cb) => {
+        //let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
+        cb(null, file.originalname);
+    }
+});
+
+app.use(multer({storage: storageConfig}).single("image")); // поле обзываем в соответствием с настройками multer
+
+
 
 
 

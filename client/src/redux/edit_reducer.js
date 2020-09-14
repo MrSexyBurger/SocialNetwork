@@ -1,15 +1,17 @@
 import React from "react";
 import {profileApi} from "../api/api";
-import {delPost} from "./profile_reducer";
+
 
 const SET_EDIT_SECTION = 'SET_EDIT_SECTION';
 const SET_EDIT_SAVING = 'SET_EDIT_SAVING';
 const SET_EDIT_INFO = 'SET_EDIT_INFO';
+const SET_NEW_AVATAR_URL = 'SET_NEW_AVATAR_URL';
 
 let initialState = {
     currentSection: 'info',
     saving: false,
-    info: null
+    info: null,
+    newAvatarUrl: null
 }
 
 const editReducer = (state = initialState, action) => {
@@ -26,6 +28,20 @@ const editReducer = (state = initialState, action) => {
                 info: action.info
             }
         }
+        case SET_NEW_AVATAR_URL: {
+            return {
+                ...state,
+                newAvatarUrl: action.newAvatarUrl
+            }
+        }
+
+        case SET_EDIT_SAVING: {
+            return {
+                ...state,
+                saving: action.saving
+            }
+        }
+
         default:
             return state;
     }
@@ -35,6 +51,7 @@ const editReducer = (state = initialState, action) => {
 const setSection = section => ({type: SET_EDIT_SECTION, section});
 const setSaving = saving => ({type: SET_EDIT_SAVING, saving});
 const setInfo = info => ({type: SET_EDIT_INFO, info});
+const setNewAvatarUrl = newAvatarUrl => ({type: SET_NEW_AVATAR_URL, newAvatarUrl});
 
 export const changeEditSection = section => dispatch => () => {
     dispatch(setSection(section));
@@ -59,6 +76,12 @@ export const getEditInfo = () => dispatch => {
         })
 }
 
+export const updateNewAvatarUrl = newAvatarUrl => dispatch => {
+    dispatch(setNewAvatarUrl(newAvatarUrl));
+}
 
+export const updateSaving = saving => dispatch => {
+    dispatch(setSaving(saving))
+}
 
 export default editReducer;

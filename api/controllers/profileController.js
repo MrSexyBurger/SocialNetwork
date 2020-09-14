@@ -1,5 +1,9 @@
 const UserModel = require('../models/user');
 const PostModel = require('../models/post');
+const sharp = require('sharp');
+const fs = require('fs');
+
+
 
 exports.profile = (req, res) => {
 
@@ -189,10 +193,8 @@ exports.editInfo = (req, res) => {
         birth: info.birth,
     }
 
-    UserModel.updateOne({_id: userId})
-        .set(profileInfo)
+    UserModel.updateOne({_id: userId}, {$set: profileInfo})
         .then(result => {
-            console.log(profileInfo)
             if (result){
                 res.send(JSON.stringify({resultCode: 0}))
             } else {
@@ -212,5 +214,73 @@ exports.getInfo = (req, res) => {
                 }
             ))
         })
+}
+
+exports.postAvatar = (req, res) => {
+    const authId = req.cookies.auth;
+    let filename = req.file.originalname;
+
+    let dirname = __dirname.replace('controllers', 'uploads\\');
+    let originalImage = dirname + filename;
+
+    // file name for cropped image
+    dirname = __dirname.replace('controllers', 'public/images/avatars/');
+
+    let avatarBig = dirname + `${authId}_avatarBig.jpg`;
+    let avatarSmall = dirname + `${authId}_avatarSmall.jpg`;
+
+    let avatarBigServer = `http://localhost:9000/images/avatars/${authId}_avatarBig.jpg`;
+    let avatarSmallServer = `http://localhost:9000/images/avatars/${authId}_avatarSmall.jpg`;
+
+    sharp(originalImage)
+        .resize({
+            width: 220,
+            height: 220,
+            fit: sharp.fit.cover,
+            withoutEnlargement: true
+        })
+        .toFile(avatarBig)
+        .then(function(new_file_info) {
+            sharp(originalImage)
+                .resize({
+                    width: 80,
+                    height: 80,
+                    fit: sharp.fit.cover,
+                    withoutEnlargement: true
+                })
+                .toFile(avatarSmall)
+                .then(function (){
+                    try {
+                        fs.unlinkSync(originalImage) //удаление синхронно
+
+                        let avatarInfo = {
+                            avatar: {
+                                small: avatarSmallServer,
+                                big: avatarBigServer
+                            }
+                        }
+
+                        UserModel.updateOne({_id: authId}, {$set: avatarInfo})
+                            .then(result => {
+                                res.send(JSON.stringify({
+                                        resultCode: 0
+                                    }
+                                ))
+                            })
+
+                    } catch(err) {
+                        console.error(err)
+                    }
+                })
+                .catch(function(err) {
+                    console.log(err)
+                    console.log("An error occured");
+                });
+        })
+        .catch(function(err) {
+            console.log(err)
+            console.log("An error occured");
+        });
+
 }
 

@@ -1,0 +1,26 @@
+.avatarWrap {
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.avatarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #fafbfc;
+}
+
+.usernameWrap {
+    margin-top: 15px;
+}
+
+.submitBtnWrap {
+    margin-top: 10px;
+}

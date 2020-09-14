@@ -10,6 +10,7 @@ import {maxLengthCreator, minLengthCreator, required} from "../../../../utils/va
 import SubmitBtnContainer from "../../../common/FormsControls/SubmitBtn/SubmitBtnContainer";
 import {connect} from "react-redux";
 import RegistrationReduxForm from "../../../RegistrationPage/RegistrationForm/RegistrationForm";
+import EditSaving from "../../EditSaving/EditSaving";
 
 
 const maxLength15 = maxLengthCreator(15);
@@ -140,9 +141,10 @@ class InfoForm extends React.Component {
                     </div>
 
 
-
-
                 </form>
+
+                {this.props.saving && <EditSaving/>}
+
             </div>
         )
     }

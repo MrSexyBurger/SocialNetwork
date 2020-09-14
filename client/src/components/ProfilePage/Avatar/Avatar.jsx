@@ -9,32 +9,15 @@ import Menu from "./Menu/Menu";
 const Avatar = (props) => {
     return (
         <div className={css.avatarWrap}>
-            <img src={props.avatar} className={css.avatarImg}/>
+            <img src={props.avatar + '?' + Math.random()} className={css.avatarImg}/>
 
             {props.guest
-                ? <div className={css.sendBtnsWrap}>
-                    <SendMessageBtnContainer/>
-                    <SendGiftBtnContainer/>
-                </div>
-                : null
-            }
-
-            {!props.menu
-                ? <div className={css.actionsWrap}>
-                    <EditLinkContainer/>
-                    <OpenMenuBtnContainer menu={props.menu} toggleMenu={props.toggleMenu}/>
-                </div>
-                : null
-            }
-
-            {props.menu
-                ? <Menu guest={!props.guest} toggleMenu={props.toggleMenu}/>
-                : null
+                ? <SendMessageBtnContainer/>
+                : <EditLinkContainer/>
             }
 
         </div>
     )
-
 }
 
 export default Avatar;

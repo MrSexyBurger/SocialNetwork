@@ -33,7 +33,7 @@ const PageMenu = props => {
                                   blockName={'createDialog'}
                                   currentBlock={props.currentBlock}
             />
-            <div className={css.userBtnLine}></div>
+            {props.userInfo && <div className={css.userBtnLine}></div>}
             {props.userInfo &&
                 <PageMenuBtnContainer btnName={props.userInfo.username}
                                       blockName={'messages'}
