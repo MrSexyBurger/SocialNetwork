@@ -139,9 +139,13 @@ const emitIsUserOnline = (id, socket) => {
     socket.emit('isUserOnline', isUserOnline(id));
 }
 
+const emitNewMessage = (socket) => {
+    socket.emit('newMessage', 'new message');
+}
+
 io.on('connection', (socket) => {
 
-    /*socket.on('new visitor', user => {
+    socket.on('new visitor', user => {
         socket.user = user;
         socket.broadcast.emit('newUserOnline', user.id);
     })
@@ -154,7 +158,12 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         let connectionMessage = socket.user.id;
         io.emit('userDisconnected' , connectionMessage)
-    })*/
+    })
+
+    socket.on('newMessage', message => {
+        //emitNewMessage(socket)
+        socket.broadcast.emit('newMessage', message);
+    });
 
 });
 

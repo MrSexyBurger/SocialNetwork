@@ -28,7 +28,7 @@ const DialogsItm = props => {
                 </div>
                 <p className={css.message}>{message ? message.text : 'Сообщений пока нет...'}</p>
             </div>
-            {isHover ? <DeleteBtnContainer/> : null}
+            {isHover ? <DeleteBtnContainer dialogId={props.dialog._id} /> : null}
         </div>
     )
 }

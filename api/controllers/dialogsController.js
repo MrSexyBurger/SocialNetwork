@@ -168,6 +168,18 @@ exports.delDialogs = (req, res) => {
     })
 }
 
+exports.delDialog = (req, res) => {
+    DialogModel.deleteOne({_id: req.params.dialogId}, (err, result) => {
+        if (err) return res.sendStatus(400);
+
+        res.send(JSON.stringify({
+            message: 'message deleted!',
+            resultCode: 0
+        }))
+
+    })
+}
+
 exports.putMessage = (req, res) => {
     let author = req.cookies.auth;
     let dialogId = req.body.dialogId;

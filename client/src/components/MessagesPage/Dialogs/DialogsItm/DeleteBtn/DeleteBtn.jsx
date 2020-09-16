@@ -3,10 +3,14 @@ import css from './DeleteBtn.module.css';
 
 const DeleteBtn = props => {
     const isHover = props.isHover;
+
+
+
     return (
         <button className={css.deleteBtn + ' ' + (isHover ? css.hover : '')}
                 onMouseEnter={props.toggleHover}
                 onMouseLeave={props.toggleHover}
+                onClick={props.deleteDialog}
         >
             X
         </button>

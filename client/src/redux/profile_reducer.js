@@ -160,7 +160,6 @@ export const toggleFullInfo = () => (dispatch) => {
 
 
 export const getPosts = (userId) => (dispatch) => {
-    console.log('getPostWorks')
     profileApi.getPosts(userId)
         .then(response => {
             dispatch(setPosts(response.data.posts));

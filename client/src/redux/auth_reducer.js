@@ -46,7 +46,7 @@ export const login = (email, password) => (dispatch) => {
                 dispatch(getAuthUserData());
             } else {
                 let message = response.data.message.length > 0 ? response.data.message : 'Some error';
-                //dispatch(stopSubmit('login', {_error: message}));
+                alert('Неверная пара логин/пароль!')
             }
         })
 }

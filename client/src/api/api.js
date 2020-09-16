@@ -90,6 +90,9 @@ export const dialogsApi = {
     getNewDialogs(){
         return instance.get('/dialogs/newDialogs');
     },
+    deleteDialog(dialogId){
+        return instance.delete(`/dialogs/${dialogId}`);
+    },
     postDialog(recipientId){
         return instance.post('/dialogs/postDialog', {recipientId});
     },
@@ -115,3 +118,17 @@ export const userOnlineStatus = (callback) => {
     socket.on('newUserOnline', onlineId => callback(null, null, onlineId))
 }
 
+
+//сообщения
+
+export const emitNewMessage = (message) => {
+    socket.emit('newMessage', message);
+}
+
+export const onNewMessage = (dialogId, callback) => {
+    socket.on('newMessage', message => {
+        if (dialogId === message.dialogId) {
+            callback(message);
+        }
+    });
+}

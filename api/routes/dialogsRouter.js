@@ -11,6 +11,7 @@ dialogsRouter.post('/postDialog', dialogsController.postDialog);
 dialogsRouter.put('/putMessage', dialogsController.putMessage);
 dialogsRouter.get('/', dialogsController.getDialogs);
 dialogsRouter.get('/getDialog/:dialogId', dialogsController.getDialog);
+dialogsRouter.delete('/:dialogId', dialogsController.delDialog);
 
 //for dev only!
 //profileRouter.get('/postTest/123', profileController.postTest);

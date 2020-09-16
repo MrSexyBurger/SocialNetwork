@@ -1,6 +1,6 @@
 import React from "react";
 import {reset} from 'redux-form';
-import {dialogsApi} from "../api/api";
+import {dialogsApi, emitNewDialog, emitNewMessage} from "../api/api";
 
 
 const SET_NEW_DIALOGS = 'SET_NEW_DIALOGS';
@@ -8,6 +8,7 @@ const SET_DIALOGS = 'SET_DIALOGS';
 const SET_DIALOG = 'SET_DIALOG';
 const PUSH_MESSAGE = 'PUSH_MESSAGE';
 const SET_BLOCK = 'SET_BLOCK';
+const DELETE_DIALOG = 'DELETE_DIALOG';
 
 let initialState = {
     currentBlock: 'dialogs',
@@ -41,6 +42,12 @@ const dialogsReducer = (state = initialState, action) => {
                 messages: action.messages
             };
         }
+        case DELETE_DIALOG: {
+            let stateCopy = {...state};
+            stateCopy.dialogs = [...state.dialogs];
+            stateCopy.dialogs = stateCopy.dialogs.filter(dialog => dialog._id !== action.dialogId);
+            return stateCopy;
+        }
         case PUSH_MESSAGE: {
             let stateCopy = {...state};
             stateCopy.messages = [...state.messages];
@@ -60,12 +67,13 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 
-export const setNewDialogs = (newDialogs) => ({type: SET_NEW_DIALOGS, newDialogs});
-export const setDialogs = (dialogs) => ({type: SET_DIALOGS, dialogs});
-export const setDialog = (dialogId, userInfo, messages) => ({type: SET_DIALOG, dialogId, userInfo, messages});
-export const pushMessage = (message) => ({type: PUSH_MESSAGE, message});
-export const setBlock = (block) => ({type: SET_BLOCK, block});
 
+const setNewDialogs = (newDialogs) => ({type: SET_NEW_DIALOGS, newDialogs});
+const setDialogs = (dialogs) => ({type: SET_DIALOGS, dialogs});
+const setDialog = (dialogId, userInfo, messages) => ({type: SET_DIALOG, dialogId, userInfo, messages});
+const pushMessage = (message) => ({type: PUSH_MESSAGE, message});
+const setBlock = (block) => ({type: SET_BLOCK, block});
+const delDialog = (dialogId) => ({type: DELETE_DIALOG, dialogId})
 
 export const getDialogs = () => (dispatch) => {
     dialogsApi.getDialogs()
@@ -93,6 +101,22 @@ export const createDialog = (recipientId) => (dispatch) => () => {
     dialogsApi.postDialog(recipientId)
         .then(response => {
             dispatch(setDialog(response.data.dialogId, response.data.userInfo, response.data.messages));
+
+            let messageObj = {
+                dialogId: response.data.dialogId,
+                userInfo: response.data.userInfo,
+                messages: response.data.messages
+            }
+
+        })
+}
+
+export const deleteDialog = (dialogId) => (dispatch) => {
+    dialogsApi.deleteDialog(dialogId)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(delDialog(dialogId));
+            }
         })
 }
 
@@ -101,8 +125,21 @@ export const putMessage = (dialogId, recipientId, message) => (dispatch) => {
         .then(response => {
             dispatch(pushMessage(response.data.message));
             dispatch(reset('message'));
+
+            let messageObj = {
+                dialogId,
+                message: response.data.message
+            }
+
+            emitNewMessage(messageObj);
         })
 }
+
+
+export const putNewMessage = (message) => (dispatch) => {
+    dispatch(pushMessage(message.message))
+}
+
 
 export const changeCurrentBlock = (block) => (dispatch) => () => {
     dispatch(setBlock(block));

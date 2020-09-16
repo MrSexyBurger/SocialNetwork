@@ -18,7 +18,7 @@ const PostItm = (props) => {
                             <span className={css.postDate}>{postDate}</span>
                         </div>
                     </div>
-                    {isAuthor && <PostMenuBtnContainer deletePost={props.deletePost}/>}
+                    <PostMenuBtnContainer deletePost={props.deletePost}/>
                 </div>
                 <div className={css.postText}>{props.text}</div>
             </div>

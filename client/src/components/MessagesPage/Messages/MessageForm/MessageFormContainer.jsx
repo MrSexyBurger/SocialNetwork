@@ -11,6 +11,13 @@ class MessageFormContainer extends React.Component {
         let message = formData.message;
 
         this.props.putMessage(dialogId, recipientId, message);
+
+        /*let messageObj = {
+            dialogId,
+            recipientId
+        }*/
+
+        //emitNewMessage(messageObj);
     }
 
     render() {
